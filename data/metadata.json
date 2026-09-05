@@ -41,6 +41,26 @@
       "id": "up_transport",
       "title": "Transport Department, Government of Uttar Pradesh",
       "url": "https://uptransport.upsdc.gov.in"
+    },
+    {
+      "id": "morth_digilocker",
+      "title": "MoRTH Digital Document Validity Notification (RT-11036/64/2017-MVL)",
+      "url": "https://morth.nic.in"
+    },
+    {
+      "id": "virtual_courts",
+      "title": "Virtual Courts Portal — Supreme Court of India",
+      "url": "https://vcourts.gov.in"
+    },
+    {
+      "id": "parivahan_echallan",
+      "title": "MoRTH Official e-Challan Grievance Portal",
+      "url": "https://echallan.parivahan.gov.in"
+    },
+    {
+      "id": "erss_112",
+      "title": "National Emergency Response Support System (112)",
+      "url": "https://112.gov.in"
     }
   ],
   "disclaimer": "This application is an offline informational reference, not an official challan lookup or legal-advice service. Amounts may vary by effective notification, state compounding schedule, court order, and enforcement circumstances."

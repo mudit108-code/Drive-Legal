@@ -101,6 +101,24 @@ def _validate_legal_sections(legal_sections: Any) -> None:
     _require(len(sections) == len(set(sections)), "legal section identifiers must be unique")
 
 
+def _validate_citizen_rights(citizen_rights: Any) -> None:
+    _require(isinstance(citizen_rights, list) and citizen_rights, "citizen_rights must be a non-empty array")
+    ids = []
+    for index, record in enumerate(citizen_rights):
+        _require(isinstance(record, dict), f"citizen right {index} must be an object")
+        for field in ("id", "title", "statutory_basis", "summary", "key_provisions"):
+            _require(
+                bool(record.get(field)),
+                f"citizen right {index} is missing {field}",
+            )
+        _require(
+            isinstance(record["key_provisions"], list) and record["key_provisions"],
+            f"key_provisions must be a non-empty list in citizen right {index}",
+        )
+        ids.append(record["id"])
+    _require(len(ids) == len(set(ids)), "citizen right IDs must be unique")
+
+
 def validate_data(
     national_fines: dict[str, dict[str, Any]],
     vehicle_types: dict[str, float],
@@ -294,6 +312,8 @@ def load_data() -> tuple[dict[str, Any], dict[str, float], dict[str, Any], dict[
 NATIONAL_FINES, VEHICLE_TYPES, STATE_DATA, METADATA = load_data()
 LEGAL_SECTIONS = _read_json("legal_sections.json")
 _validate_legal_sections(LEGAL_SECTIONS)
+CITIZEN_RIGHTS = _read_json("citizen_rights.json")
+_validate_citizen_rights(CITIZEN_RIGHTS)
 ALL_STATES = sorted(STATE_DATA)
 
 

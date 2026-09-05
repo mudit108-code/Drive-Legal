@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app_core import (
     ALL_STATES,
+    CITIZEN_RIGHTS,
     LEGAL_SECTIONS,
     METADATA,
     NATIONAL_FINES,
@@ -39,6 +40,8 @@ def test_complete_data_package_is_loaded_from_local_files():
         ("national_fines.json", NATIONAL_FINES),
         ("vehicle_types.json", VEHICLE_TYPES),
         ("state_data.json", STATE_DATA),
+        ("legal_sections.json", LEGAL_SECTIONS),
+        ("citizen_rights.json", CITIZEN_RIGHTS),
     ):
         assert json.loads((ROOT / "data" / filename).read_text(encoding="utf-8")) == expected
 
@@ -363,3 +366,30 @@ def test_calculate_multi_fine_validation_rejects_empty_and_invalid():
 
     with pytest.raises(CalculatorInputError, match="missing violation_key or vehicle_key"):
         calculate_multi_fine([{"violation_key": "no_helmet"}], "Delhi")
+
+
+def test_compounding_state_count_and_metrics():
+    compounding_states = [s for s, data in STATE_DATA.items() if data.get("compounding_schedule")]
+    assert len(compounding_states) == 6
+    assert set(compounding_states) == {"Delhi", "Karnataka", "Maharashtra", "Gujarat", "Tamil Nadu", "Uttar Pradesh"}
+    assert len(LEGAL_SECTIONS) == 18
+    assert len(NATIONAL_FINES) == 19
+
+
+def test_citizen_rights_schema_and_content():
+    assert len(CITIZEN_RIGHTS) == 5
+    ids = [r["id"] for r in CITIZEN_RIGHTS]
+    assert len(ids) == len(set(ids))
+    assert "digilocker_validity" in ids
+    assert "grace_period_15_days" in ids
+    assert "virtual_courts" in ids
+    assert "grievance_redressal" in ids
+    assert "emergency_helplines" in ids
+
+    source_ids = {s["id"] for s in METADATA["sources"]}
+    for r in CITIZEN_RIGHTS:
+        assert r["title"]
+        assert r["statutory_basis"]
+        assert r["summary"]
+        assert len(r["key_provisions"]) >= 2
+        assert r["source_id"] in source_ids
