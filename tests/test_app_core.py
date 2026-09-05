@@ -10,6 +10,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from app_core import (
     ALL_STATES,
+    CITIZEN_RIGHTS,
     LEGAL_SECTIONS,
     METADATA,
     NATIONAL_FINES,
@@ -20,6 +21,7 @@ from app_core import (
     calculate_fine,
     calculate_multi_fine,
     get_allowed_vehicle_types,
+    get_compounding_comparison_matrix,
     get_source_details,
     get_state_compounding_info,
     get_violation_options,
@@ -39,6 +41,8 @@ def test_complete_data_package_is_loaded_from_local_files():
         ("national_fines.json", NATIONAL_FINES),
         ("vehicle_types.json", VEHICLE_TYPES),
         ("state_data.json", STATE_DATA),
+        ("legal_sections.json", LEGAL_SECTIONS),
+        ("citizen_rights.json", CITIZEN_RIGHTS),
     ):
         assert json.loads((ROOT / "data" / filename).read_text(encoding="utf-8")) == expected
 
@@ -363,3 +367,75 @@ def test_calculate_multi_fine_validation_rejects_empty_and_invalid():
 
     with pytest.raises(CalculatorInputError, match="missing violation_key or vehicle_key"):
         calculate_multi_fine([{"violation_key": "no_helmet"}], "Delhi")
+
+
+def test_compounding_state_count_and_metrics():
+    compounding_states = [s for s, data in STATE_DATA.items() if data.get("compounding_schedule")]
+    assert len(compounding_states) == 8
+    assert set(compounding_states) == {
+        "Delhi", "Karnataka", "Maharashtra", "Gujarat", "Kerala", "Rajasthan", "Tamil Nadu", "Uttar Pradesh"
+    }
+    assert len(LEGAL_SECTIONS) == 18
+    assert len(NATIONAL_FINES) == 19
+
+
+def test_citizen_rights_schema_and_content():
+    assert len(CITIZEN_RIGHTS) == 5
+    ids = [r["id"] for r in CITIZEN_RIGHTS]
+    assert len(ids) == len(set(ids))
+    assert "digilocker_validity" in ids
+    assert "grace_period_15_days" in ids
+    assert "virtual_courts" in ids
+    assert "grievance_redressal" in ids
+    assert "emergency_helplines" in ids
+
+    source_ids = {s["id"] for s in METADATA["sources"]}
+    for r in CITIZEN_RIGHTS:
+        assert r["title"]
+        assert r["statutory_basis"]
+        assert r["summary"]
+        assert len(r["key_provisions"]) >= 2
+        assert r["source_id"] in source_ids
+
+
+def test_get_compounding_comparison_matrix_structure():
+    matrix = get_compounding_comparison_matrix()
+    assert len(matrix["states"]) == 8
+    assert matrix["states"] == [
+        "Delhi", "Gujarat", "Karnataka", "Kerala", "Maharashtra", "Rajasthan", "Tamil Nadu", "Uttar Pradesh"
+    ]
+    assert len(matrix["rows"]) > 0
+
+    helmet_row = next(r for r in matrix["rows"] if r["violation_key"] == "no_helmet")
+    assert helmet_row["central_fine"] == 1000
+    assert helmet_row["state_fees"]["Delhi"] == 1000
+    assert helmet_row["state_fees"]["Gujarat"] == 500
+    assert helmet_row["state_fees"]["Karnataka"] == 500
+    assert helmet_row["state_fees"]["Kerala"] == 500
+    assert helmet_row["state_fees"]["Maharashtra"] == 500
+    assert helmet_row["state_fees"]["Rajasthan"] == 1000
+    assert helmet_row["state_fees"]["Tamil Nadu"] == 1000
+    assert helmet_row["state_fees"]["Uttar Pradesh"] == 1000
+
+
+def test_kerala_and_rajasthan_compounding_resolution():
+    kerala_helmet = get_state_compounding_info("Kerala", "no_helmet")
+    assert kerala_helmet is not None
+    assert kerala_helmet["notification_id"] == "S.R.O. No. 675/2019"
+    assert kerala_helmet["effective_date"] == "2019-09-24"
+    assert kerala_helmet["compounding_fee"] == 500
+
+    rajasthan_dl = get_state_compounding_info("Rajasthan", "no_dl")
+    assert rajasthan_dl is not None
+    assert rajasthan_dl["notification_id"] == "F.1(1)Trans/Rules/2019/31411"
+    assert rajasthan_dl["effective_date"] == "2020-07-08"
+    assert rajasthan_dl["compounding_fee"] == 2500
+
+
+def test_get_compounding_comparison_matrix_filtering_and_errors():
+    filtered = get_compounding_comparison_matrix(violation_keys=["no_helmet", "signal_jump"])
+    assert len(filtered["rows"]) == 2
+    assert [r["violation_key"] for r in filtered["rows"]] == ["no_helmet", "signal_jump"]
+
+    with pytest.raises(CalculatorInputError, match="Unknown violation"):
+        get_compounding_comparison_matrix(violation_keys=["invalid_offence"])

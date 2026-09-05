@@ -262,16 +262,28 @@
     "helmet_law": "Mandatory for both rider and pillion",
     "speed_city": 50,
     "speed_highway": 100,
-    "source_status": "reference_only",
+    "source_status": "state_notification",
     "source_ids": [
       "mva1988",
-      "mva2019"
+      "mva2019",
+      "kerala_transport"
     ],
-    "legal_note": "State-specific speed limits, surcharges, and enforcement notes must be verified against the latest state notification before reliance.",
-    "notification_id": null,
-    "effective_date": null,
-    "jurisdiction": null,
-    "compounding_schedule": null
+    "legal_note": "Compounding amounts notified by the Transport (B) Department, Government of Kerala under Section 200 of the Motor Vehicles Act (S.R.O. No. 675/2019).",
+    "notification_id": "S.R.O. No. 675/2019",
+    "effective_date": "2019-09-24",
+    "jurisdiction": "State of Kerala",
+    "compounding_schedule": {
+      "no_helmet": 500,
+      "no_seatbelt": 500,
+      "overspeeding_lmv": 1500,
+      "overspeeding_mmv": 2000,
+      "signal_jump": 1000,
+      "no_dl": 3000,
+      "no_insurance": 2000,
+      "no_rc": 2000,
+      "dangerous_driving": 1000,
+      "pollution_norms": 2000
+    }
   },
   "Madhya Pradesh": {
     "surcharge": 0.0,
@@ -459,16 +471,27 @@
     "helmet_law": "Mandatory for both rider and pillion",
     "speed_city": 50,
     "speed_highway": 100,
-    "source_status": "reference_only",
+    "source_status": "state_notification",
     "source_ids": [
       "mva1988",
-      "mva2019"
+      "mva2019",
+      "rajasthan_transport"
     ],
-    "legal_note": "State-specific speed limits, surcharges, and enforcement notes must be verified against the latest state notification before reliance.",
-    "notification_id": null,
-    "effective_date": null,
-    "jurisdiction": null,
-    "compounding_schedule": null
+    "legal_note": "Compounding amounts notified by the Transport Department, Government of Rajasthan under Section 200 of the Motor Vehicles Act (Notification No. F.1(1)Trans/Rules/2019/31411).",
+    "notification_id": "F.1(1)Trans/Rules/2019/31411",
+    "effective_date": "2020-07-08",
+    "jurisdiction": "State of Rajasthan",
+    "compounding_schedule": {
+      "no_helmet": 1000,
+      "no_seatbelt": 1000,
+      "overspeeding_lmv": 1000,
+      "overspeeding_mmv": 2000,
+      "no_dl": 2500,
+      "no_insurance": 2000,
+      "no_rc": 2000,
+      "no_parking": 500,
+      "signal_jump": 1000
+    }
   },
   "Sikkim": {
     "surcharge": 0.0,

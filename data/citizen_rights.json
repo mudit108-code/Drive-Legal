@@ -1,0 +1,60 @@
+[
+  {
+    "id": "digilocker_validity",
+    "title": "Digital Document Validity (DigiLocker / mParivahan)",
+    "statutory_basis": "Rule 139 CMVR & MoRTH Notification RT-11036/64/2017-MVL",
+    "summary": "Police cannot compel production of physical documents if presented via DigiLocker or mParivahan.",
+    "key_provisions": [
+      "Driving Licence, Registration Certificate (RC), Insurance Certificate, and PUC presented electronically in DigiLocker or mParivahan are legally equivalent to physical original documents under Section 4 of the Information Technology Act 2000 and Rule 139 of the Central Motor Vehicles Rules.",
+      "Law enforcement authorities have direct access to the mParivahan and Sarathi databases to verify electronic records; motorists cannot be penalized solely for not carrying laminated cards.",
+      "In situations where an offence requires impoundment or licence suspension, the seizure is recorded electronically on the eChallan portal without confiscating the physical card."
+    ],
+    "source_id": "morth_digilocker"
+  },
+  {
+    "id": "grace_period_15_days",
+    "title": "15-Day Document Production Grace Period",
+    "statutory_basis": "Section 130 Motor Vehicles Act 1988 & Rule 139 CMVR",
+    "summary": "Motorists have 15 days to present vehicle documents if not immediately available at the time of inspection.",
+    "key_provisions": [
+      "If a motorist cannot produce documents immediately upon demand by a police officer in uniform, they cannot be instantly convicted if they undertake to produce them within 15 days.",
+      "Documents (Licence, RC, Certificate of Insurance) can be produced within 15 days at the designated police station or office of the enforcement authority.",
+      "The statutory penalty for failure to carry documents does not apply if valid documents are produced within this statutory window."
+    ],
+    "source_id": "mva1988"
+  },
+  {
+    "id": "virtual_courts",
+    "title": "Virtual Courts Online Challan Disposal",
+    "statutory_basis": "e-Courts Project, Supreme Court of India & Ministry of Law and Justice",
+    "summary": "Non-compoundable and contested challans can be adjudicated and paid online via Virtual Courts without visiting a physical courtroom.",
+    "key_provisions": [
+      "Motorists who receive a court-referred challan notice can access https://vcourts.gov.in to review proceedings without physical attendance.",
+      "The virtual judge examines the challan; the citizen can plead guilty and pay the judicially assessed fine online, or contest the challan to transfer it to a regular open court."
+    ],
+    "source_id": "virtual_courts"
+  },
+  {
+    "id": "grievance_redressal",
+    "title": "Official e-Challan Grievance & Wrong Challan Dispute",
+    "statutory_basis": "MoRTH e-Challan Dispute Mechanism",
+    "summary": "Dispute incorrect challans (e.g. cloned number plate, wrong vehicle detected) directly on the official Parivahan portal.",
+    "key_provisions": [
+      "If an e-challan has been issued incorrectly due to automated camera OCR errors, mismatched plates, or vehicle theft, motorists can lodge an official grievance at https://echallan.parivahan.gov.in/gsticket/.",
+      "Provide the challan number, vehicle registration number, and photographic evidence to request review before the challan is forwarded to court."
+    ],
+    "source_id": "parivahan_echallan"
+  },
+  {
+    "id": "emergency_helplines",
+    "title": "National Emergency & Roadside Assistance Helplines",
+    "statutory_basis": "Emergency Response Support System (ERSS) & NHAI Guidelines",
+    "summary": "Key toll-free emergency helplines accessible 24/7 across India.",
+    "key_provisions": [
+      "112 — National Emergency Response Support System (Police, Fire, Medical, integrated emergency response).",
+      "1033 — National Highway Emergency & Assistance (Toll-free 24/7 ambulance, patrol, and breakdown assistance on all National Highways).",
+      "1073 — Road Safety & Accident Emergency Helpline."
+    ],
+    "source_id": "erss_112"
+  }
+]
