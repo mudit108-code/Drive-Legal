@@ -10,6 +10,7 @@ import streamlit as st
 
 from app_core import (
     ALL_STATES,
+    CITIZEN_RIGHTS,
     LEGAL_SECTIONS,
     METADATA,
     NATIONAL_FINES,
@@ -19,6 +20,7 @@ from app_core import (
     calculate_fine,
     calculate_multi_fine,
     get_allowed_vehicle_types,
+    get_compounding_comparison_matrix,
     get_source_details,
     get_violation_options,
 )
@@ -236,6 +238,14 @@ with tab1:
             })
         st.dataframe(cart_table, use_container_width=True, hide_index=True)
 
+        with st.expander("✏️ Manage individual items in cart"):
+            for idx, it in enumerate(st.session_state.challan_cart):
+                c_desc, c_del = st.columns([4, 1])
+                c_desc.write(f"**{idx + 1}.** {it['description']} ({it['vehicle_key']}) — ₹{it['result']['total']:,.2f}")
+                if c_del.button("❌ Remove", key=f"del_cart_item_{idx}", use_container_width=True):
+                    st.session_state.challan_cart.pop(idx)
+                    st.rerun()
+
         m1, m2, m3 = st.columns(3)
         m1.metric("Offences In Cart", len(st.session_state.challan_cart))
         m2.metric("Combined Estimated Total", f"₹{multi_result['grand_total']:,.2f}")
@@ -329,8 +339,39 @@ with tab2:
         hide_index=True,
     )
 
+    st.markdown("---")
+    st.markdown("### 🛡️ Motorist Rights & Dispute Redressal Guide")
+    st.caption("Statutory protections, digital document validity, and grievance mechanisms under Indian law.")
+    for right in CITIZEN_RIGHTS:
+        with st.expander(f"**{right['title']}** — *{right['statutory_basis']}*"):
+            st.markdown(f"**Summary:** {right['summary']}")
+            st.markdown("**Key Provisions:**")
+            for prov in right["key_provisions"]:
+                st.markdown(f"- {prov}")
+            source = next((s for s in METADATA["sources"] if s["id"] == right.get("source_id")), None)
+            if source:
+                st.caption(f"Official Source: [{source['title']}]({source['url']})")
+
 with tab3:
     st.markdown("## 🗺️ State and UT reference rules")
+
+    with st.expander("📊 Inter-State Section 200 Compounding Comparison Matrix", expanded=False):
+        st.markdown("Compare official compounding amounts notified under Section 200 MVA across verified states against the central statutory fine:")
+        matrix_data = get_compounding_comparison_matrix()
+        matrix_rows = []
+        for r in matrix_data["rows"]:
+            row_dict = {
+                "Violation": r["description"],
+                "Penalty Section": r["penalty_section"],
+                "Central Act Fine": f"₹{r['central_fine']:,}",
+            }
+            for st_name in matrix_data["states"]:
+                fee = r["state_fees"].get(st_name)
+                row_dict[st_name] = f"₹{fee:,}" if fee is not None else "—"
+            matrix_rows.append(row_dict)
+        st.dataframe(matrix_rows, use_container_width=True, hide_index=True)
+        st.caption("Note: '—' indicates that the offence has not been notified as compoundable by that state government under Section 200 of the Act, so the central statutory fine applies.")
+
     search_term = st.text_input("🔍 Search state or Union Territory", placeholder="e.g. Maharashtra, Delhi, Goa")
     filtered_states = [state for state in ALL_STATES if not search_term or search_term.lower() in state.lower()]
     for state in filtered_states:
@@ -381,8 +422,11 @@ with tab4:
     for source in METADATA["sources"]:
         st.markdown(f"- **{source['title']}**: {source['url']}")
     st.markdown("### Legal disclaimer")
-    st.info(METADATA["disclaimer"])
-    c1, c2, c3 = st.columns(3)
+    compounding_count = sum(1 for s in STATE_DATA.values() if s.get("compounding_schedule"))
+    c1, c2, c3, c4, c5, c6 = st.columns(6)
     c1.metric("States covered", "28")
     c2.metric("Union Territories", "8")
     c3.metric("Violation records", str(len(NATIONAL_FINES)))
+    c4.metric("Legal sections", str(len(LEGAL_SECTIONS)))
+    c5.metric("Compounding states", str(compounding_count))
+    c6.metric("Citizen rights", str(len(CITIZEN_RIGHTS)))

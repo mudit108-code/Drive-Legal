@@ -101,6 +101,24 @@ def _validate_legal_sections(legal_sections: Any) -> None:
     _require(len(sections) == len(set(sections)), "legal section identifiers must be unique")
 
 
+def _validate_citizen_rights(citizen_rights: Any) -> None:
+    _require(isinstance(citizen_rights, list) and citizen_rights, "citizen_rights must be a non-empty array")
+    ids = []
+    for index, record in enumerate(citizen_rights):
+        _require(isinstance(record, dict), f"citizen right {index} must be an object")
+        for field in ("id", "title", "statutory_basis", "summary", "key_provisions"):
+            _require(
+                bool(record.get(field)),
+                f"citizen right {index} is missing {field}",
+            )
+        _require(
+            isinstance(record["key_provisions"], list) and record["key_provisions"],
+            f"key_provisions must be a non-empty list in citizen right {index}",
+        )
+        ids.append(record["id"])
+    _require(len(ids) == len(set(ids)), "citizen right IDs must be unique")
+
+
 def validate_data(
     national_fines: dict[str, dict[str, Any]],
     vehicle_types: dict[str, float],
@@ -294,6 +312,8 @@ def load_data() -> tuple[dict[str, Any], dict[str, float], dict[str, Any], dict[
 NATIONAL_FINES, VEHICLE_TYPES, STATE_DATA, METADATA = load_data()
 LEGAL_SECTIONS = _read_json("legal_sections.json")
 _validate_legal_sections(LEGAL_SECTIONS)
+CITIZEN_RIGHTS = _read_json("citizen_rights.json")
+_validate_citizen_rights(CITIZEN_RIGHTS)
 ALL_STATES = sorted(STATE_DATA)
 
 
@@ -350,6 +370,48 @@ def get_state_compounding_info(state: str, violation_key: str | None = None) -> 
         "notification_id": record.get("notification_id"),
         "effective_date": record.get("effective_date"),
         "schedule": dict(schedule),
+    }
+
+
+def get_compounding_comparison_matrix(
+    violation_keys: list[str] | None = None,
+) -> dict[str, Any]:
+    """Generate a structured inter-state comparison of Section 200 compounding fees."""
+    compounding_states = sorted(
+        [state for state, data in STATE_DATA.items() if data.get("compounding_schedule")]
+    )
+    if not compounding_states:
+        return {"states": [], "rows": []}
+
+    if violation_keys is None:
+        all_compounded_keys = set()
+        for state in compounding_states:
+            all_compounded_keys.update(STATE_DATA[state]["compounding_schedule"].keys())
+        selected_keys = [k for k in NATIONAL_FINES if k in all_compounded_keys]
+    else:
+        for k in violation_keys:
+            if k not in NATIONAL_FINES:
+                raise CalculatorInputError(f"Unknown violation: {k}")
+        selected_keys = violation_keys
+
+    rows = []
+    for k in selected_keys:
+        fine_record = NATIONAL_FINES[k]
+        row: dict[str, Any] = {
+            "violation_key": k,
+            "description": fine_record["description"],
+            "penalty_section": fine_record["penalty_section"],
+            "central_fine": fine_record["fine"],
+            "state_fees": {},
+        }
+        for state in compounding_states:
+            fee = STATE_DATA[state]["compounding_schedule"].get(k)
+            row["state_fees"][state] = fee
+        rows.append(row)
+
+    return {
+        "states": compounding_states,
+        "rows": rows,
     }
 
 

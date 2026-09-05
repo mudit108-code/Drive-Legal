@@ -48,6 +48,7 @@ jobs:
           python -m json.tool data/state_data.json > /dev/null
           python -m json.tool data/metadata.json > /dev/null
           python -m json.tool data/legal_sections.json > /dev/null
+          python -m json.tool data/citizen_rights.json > /dev/null
 
       - name: Verify offline import integrity
         run: |
