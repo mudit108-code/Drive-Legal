@@ -236,6 +236,14 @@ with tab1:
             })
         st.dataframe(cart_table, use_container_width=True, hide_index=True)
 
+        with st.expander("✏️ Manage individual items in cart"):
+            for idx, it in enumerate(st.session_state.challan_cart):
+                c_desc, c_del = st.columns([4, 1])
+                c_desc.write(f"**{idx + 1}.** {it['description']} ({it['vehicle_key']}) — ₹{it['result']['total']:,.2f}")
+                if c_del.button("❌ Remove", key=f"del_cart_item_{idx}", use_container_width=True):
+                    st.session_state.challan_cart.pop(idx)
+                    st.rerun()
+
         m1, m2, m3 = st.columns(3)
         m1.metric("Offences In Cart", len(st.session_state.challan_cart))
         m2.metric("Combined Estimated Total", f"₹{multi_result['grand_total']:,.2f}")
@@ -381,8 +389,10 @@ with tab4:
     for source in METADATA["sources"]:
         st.markdown(f"- **{source['title']}**: {source['url']}")
     st.markdown("### Legal disclaimer")
-    st.info(METADATA["disclaimer"])
-    c1, c2, c3 = st.columns(3)
+    compounding_count = sum(1 for s in STATE_DATA.values() if s.get("compounding_schedule"))
+    c1, c2, c3, c4, c5 = st.columns(5)
     c1.metric("States covered", "28")
     c2.metric("Union Territories", "8")
     c3.metric("Violation records", str(len(NATIONAL_FINES)))
+    c4.metric("Legal sections", str(len(LEGAL_SECTIONS)))
+    c5.metric("Compounding states", str(compounding_count))

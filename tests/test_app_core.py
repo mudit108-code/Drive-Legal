@@ -363,3 +363,11 @@ def test_calculate_multi_fine_validation_rejects_empty_and_invalid():
 
     with pytest.raises(CalculatorInputError, match="missing violation_key or vehicle_key"):
         calculate_multi_fine([{"violation_key": "no_helmet"}], "Delhi")
+
+
+def test_compounding_state_count_and_metrics():
+    compounding_states = [s for s, data in STATE_DATA.items() if data.get("compounding_schedule")]
+    assert len(compounding_states) == 6
+    assert set(compounding_states) == {"Delhi", "Karnataka", "Maharashtra", "Gujarat", "Tamil Nadu", "Uttar Pradesh"}
+    assert len(LEGAL_SECTIONS) == 18
+    assert len(NATIONAL_FINES) == 19
