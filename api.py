@@ -13,6 +13,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 import app_core
 from models import (
+    FleetAuditAnalyticsResponse,
+    StateCompoundingReliefStatModel,
     VehicleRegistrationResolution,
     BatchAuditRequest,
     BatchAuditResponse,
@@ -309,4 +311,34 @@ def resolve_vehicle_registration(reg_number: str) -> VehicleRegistrationResoluti
     """Parse vehicle registration number, resolve state/UT, RTO division, and detect BH-series."""
     res = app_core.parse_vehicle_registration(reg_number)
     return VehicleRegistrationResolution.model_validate(res)
+
+@app.get(
+    "/api/v1/compounding-relief-stats",
+    response_model=list[StateCompoundingReliefStatModel],
+    tags=["compounding"],
+    summary="Comparative State Compounding Concession Statistics",
+)
+def get_compounding_relief_stats() -> list[StateCompoundingReliefStatModel]:
+    """Compute average financial relief percentage across all Section 200 notified states."""
+    stats = app_core.get_state_compounding_relief_stats()
+    return [StateCompoundingReliefStatModel.model_validate(s) for s in stats]
+
+
+@app.post(
+    "/api/v1/fleet/analytics",
+    response_model=FleetAuditAnalyticsResponse,
+    tags=["fleet"],
+    summary="Generate Executive Fleet Audit Visual Telematics & Analytics",
+)
+def generate_fleet_analytics(payload: BatchAuditRequest) -> FleetAuditAnalyticsResponse:
+    """Audit batch and generate executive KPIs, breakdown by status, state, and violations."""
+    try:
+        records_payload = [rec.model_dump() for rec in payload.records]
+        audit_res = app_core.audit_challan_batch(records_payload)
+        analytics = app_core.get_fleet_audit_analytics(audit_res)
+        return FleetAuditAnalyticsResponse.model_validate(analytics)
+    except app_core.CalculatorInputError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Fleet analytics error: {exc}") from exc
 

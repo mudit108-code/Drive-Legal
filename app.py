@@ -24,6 +24,8 @@ from app_core import (
     generate_dispute_representation,
     get_allowed_vehicle_types,
     get_compounding_comparison_matrix,
+    get_fleet_audit_analytics,
+    get_state_compounding_relief_stats,
     get_source_details,
     get_violation_options,
     parse_vehicle_registration,
@@ -364,6 +366,7 @@ with tab1:
                     st.warning("The uploaded CSV contains no valid data rows.")
                 else:
                     audit_res = audit_challan_batch(batch_records)
+                    fleet_analytics = get_fleet_audit_analytics(audit_res)
 
                     fc1, fc2, fc3, fc4 = st.columns(4)
                     fc1.metric("Challans Audited", audit_res["total_challans_audited"])
@@ -371,10 +374,21 @@ with tab1:
                     fc3.metric("Legally Due", f"₹{audit_res['total_legally_due']:,.2f}")
                     fc4.metric("Flagged Overcharges", f"₹{audit_res['total_potential_overcharges']:,.2f}")
 
+                    kpi1, kpi2, kpi3 = st.columns(3)
+                    kpi1.metric("Compliance Rate", f"{fleet_analytics['compliance_rate_pct']}%")
+                    kpi2.metric("Overcharge Rate", f"{fleet_analytics['overcharge_rate_pct']}%")
+                    kpi3.metric("Savings Opportunity", f"{fleet_analytics['savings_opportunity_pct']}%")
+
                     status_cols = st.columns(3)
                     status_cols[0].info(f"✅ Compliant: {audit_res['compliant_count']}")
                     status_cols[1].error(f"⚠️ Overcharged: {audit_res['overcharged_count']}")
                     status_cols[2].warning(f"⚖️ Court Mandatory: {audit_res['court_only_count']}")
+
+                    if fleet_analytics["by_state"]:
+                        st.markdown("##### 📊 State-wise Flagged Overcharges")
+                        chart_data = {st_k: d["overcharges"] for st_k, d in fleet_analytics["by_state"].items() if d["overcharges"] > 0}
+                        if chart_data:
+                            st.bar_chart(chart_data)
 
                     table_rows = []
                     for r in audit_res["records"]:
@@ -538,6 +552,13 @@ with tab3:
             matrix_rows.append(row_dict)
         st.dataframe(matrix_rows, use_container_width=True, hide_index=True)
         st.caption("Note: '—' indicates that the offence has not been notified as compoundable by that state government under Section 200 of the Act, so the central statutory fine applies.")
+
+        st.markdown("##### 📈 Comparative State Compounding Concession Rate (%)")
+        st.caption("Average statutory discount percentage offered by verified state gazettes compared to Central Act penalties:")
+        relief_stats = get_state_compounding_relief_stats()
+        if relief_stats:
+            relief_chart = {s["state"]: s["average_relief_pct"] for s in relief_stats}
+            st.bar_chart(relief_chart)
 
     search_term = st.text_input("🔍 Search state or Union Territory", placeholder="e.g. Maharashtra, Delhi, Goa")
     filtered_states = [state for state in ALL_STATES if not search_term or search_term.lower() in state.lower()]

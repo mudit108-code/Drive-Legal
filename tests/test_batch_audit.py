@@ -121,3 +121,55 @@ def test_api_fleet_sample_csv_endpoint():
     data = response.json()
     assert data["filename"] == "sample_fleet_challans.csv"
     assert "challan_id,vehicle_number,vehicle_type" in data["csv_content"]
+
+def test_fleet_audit_analytics_computation():
+    """Verify computation of executive KPIs and categorical breakdowns in fleet analytics."""
+    empty_analytics = app_core.get_fleet_audit_analytics({})
+    assert empty_analytics["compliance_rate_pct"] == 100.0
+    assert empty_analytics["overcharge_rate_pct"] == 0.0
+
+    batch = [
+        {
+            "challan_id": "CH-1",
+            "vehicle_type": "Two-Wheeler (> 50cc)",
+            "state": "Karnataka",
+            "violation_key": "no_helmet",
+            "amount_paid": 1000.0,
+        },
+        {
+            "challan_id": "CH-2",
+            "vehicle_type": "Two-Wheeler (> 50cc)",
+            "state": "Delhi",
+            "violation_key": "no_helmet",
+            "amount_paid": 1000.0,
+        },
+    ]
+    audit_res = app_core.audit_challan_batch(batch)
+    analytics = app_core.get_fleet_audit_analytics(audit_res)
+
+    assert analytics["compliance_rate_pct"] == 50.0
+    assert analytics["overcharge_rate_pct"] == 50.0
+    assert analytics["court_mandatory_rate_pct"] == 0.0
+    assert analytics["by_status"]["Compliant"] == 1
+    assert analytics["by_status"]["Overcharged"] == 1
+    assert "Karnataka" in analytics["by_state"]
+    assert analytics["by_state"]["Karnataka"]["overcharges"] == 500.0
+
+
+def test_state_compounding_relief_stats():
+    """Verify extraction and percentage calculation of Section 200 state relief rates."""
+    stats = app_core.get_state_compounding_relief_stats()
+    assert isinstance(stats, list)
+    assert len(stats) == 8
+
+    states = {s["state"] for s in stats}
+    assert "Gujarat" in states
+    assert "Karnataka" in states
+    assert "Maharashtra" in states
+
+    for s in stats:
+        assert s["compoundable_offences"] > 0
+        assert s["central_sum"] > 0.0
+        assert s["state_compounded_sum"] > 0.0
+        assert 0.0 <= s["average_relief_pct"] <= 100.0
+
