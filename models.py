@@ -222,6 +222,7 @@ class DisputeRepresentationRequest(BaseModel):
 class DisputeRepresentationResponse(BaseModel):
     """Formatted legal representation notice and statutory metadata."""
     letter_text: str
+    html_content: str | None = None
     dispute_type: str
     statutory_authority: str
     challan_number: str
@@ -325,4 +326,42 @@ class VehicleRegistrationResolution(BaseModel):
     vehicle_unique_number: str | None = None
     jurisdiction_type: str
     statutory_note: str
+
+def validate_package_with_models(
+    national_fines: dict[str, Any],
+    vehicle_types: dict[str, float],
+    state_data: dict[str, Any],
+    metadata: dict[str, Any],
+    legal_sections: list[dict[str, Any]],
+    citizen_rights: list[dict[str, Any]],
+) -> tuple[int, int, int, int, int, int]:
+    """Validate all bundled data sets using Pydantic v2 schemas.
+    Returns counts of validated records upon success.
+    """
+    MetadataModel.model_validate(metadata)
+
+    for key, rec in national_fines.items():
+        FineRecordModel.model_validate(rec)
+
+    for v, mult in vehicle_types.items():
+        if not isinstance(mult, (float, int)) or mult <= 0 or float('inf') == mult or mult != mult:
+            raise ValueError(f"Invalid multiplier for {v}: {mult}")
+
+    for s, rec in state_data.items():
+        StateDataModel.model_validate(rec)
+
+    for sec in legal_sections:
+        LegalSectionModel.model_validate(sec)
+
+    for cr in citizen_rights:
+        CitizenRightModel.model_validate(cr)
+
+    return (
+        len(national_fines),
+        len(vehicle_types),
+        len(state_data),
+        len(metadata.sources) if hasattr(metadata, 'sources') else len(metadata.get('sources', [])),
+        len(legal_sections),
+        len(citizen_rights),
+    )
 

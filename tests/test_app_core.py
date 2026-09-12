@@ -564,3 +564,21 @@ def test_validate_rto_directory_validation():
     with pytest.raises(DataValidationError, match="bh_series must be an object"):
         app_core._validate_rto_directory({"state_codes": {}, "rto_divisions": {}})
 
+def test_pydantic_package_validation_helper():
+    """Verify validate_package_with_models validates bundled data without errors."""
+    from models import validate_package_with_models
+    counts = validate_package_with_models(
+        national_fines=NATIONAL_FINES,
+        vehicle_types=VEHICLE_TYPES,
+        state_data=STATE_DATA,
+        metadata=METADATA,
+        legal_sections=LEGAL_SECTIONS,
+        citizen_rights=CITIZEN_RIGHTS,
+    )
+    assert counts[0] == 19
+    assert counts[1] == 7
+    assert counts[2] == 36
+    assert counts[3] == 14
+    assert counts[4] == 18
+    assert counts[5] == 5
+

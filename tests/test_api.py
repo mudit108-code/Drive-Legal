@@ -185,4 +185,23 @@ def test_api_create_dispute_representation():
     assert data["vehicle_number"] == "MH-02-CD-5678"
     assert "Section 200" in data["letter_text"]
     assert "MVR 0919/C.R. 152/TRA-2" in data["letter_text"]
+    assert data["html_content"] is not None
+    assert "<!DOCTYPE html>" in data["html_content"]
+    assert "MH56781234" in data["html_content"]
+    assert "Rohan Verma" in data["html_content"]
+
+def test_api_observability_headers():
+    """Verify X-Request-ID and X-Process-Time-Ms middleware headers on all responses."""
+    resp = client.get("/health")
+    assert resp.status_code == 200
+    assert "x-request-id" in resp.headers
+    assert len(resp.headers["x-request-id"]) > 0
+    assert "x-process-time-ms" in resp.headers
+    process_ms = float(resp.headers["x-process-time-ms"])
+    assert process_ms >= 0.0
+
+    custom_id = "test-custom-trace-uuid-1234"
+    resp_custom = client.get("/health", headers={"x-request-id": custom_id})
+    assert resp_custom.status_code == 200
+    assert resp_custom.headers["x-request-id"] == custom_id
 

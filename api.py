@@ -7,8 +7,10 @@ and statutory legal catalogue search.
 
 from __future__ import annotations
 
+import time
+import uuid
 from typing import Any
-from fastapi import FastAPI, HTTPException, Query, status
+from fastapi import FastAPI, HTTPException, Query, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 
 import app_core
@@ -46,6 +48,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.middleware("http")
+async def add_observability_headers(request: Request, call_next):
+    """Inject X-Request-ID tracing and X-Process-Time-Ms latency telemetry into response headers."""
+    request_id = request.headers.get("x-request-id") or uuid.uuid4().hex
+    start_time = time.perf_counter()
+    response = await call_next(request)
+    process_time_ms = (time.perf_counter() - start_time) * 1000.0
+    response.headers["X-Request-ID"] = request_id
+    response.headers["X-Process-Time-Ms"] = f"{process_time_ms:.2f}"
+    return response
 
 
 @app.get("/health", tags=["health"], summary="Liveness & Readiness Health Check")
@@ -255,9 +269,21 @@ def create_dispute_representation(payload: DisputeRepresentationRequest) -> Disp
             violation_key=payload.violation_key,
             additional_facts=payload.additional_facts,
         )
+        html_letter = app_core.generate_dispute_representation_html(
+            citizen_name=payload.citizen_name,
+            vehicle_number=payload.vehicle_number,
+            challan_number=payload.challan_number,
+            challan_date=payload.challan_date,
+            state=payload.state,
+            issuing_authority=payload.issuing_authority,
+            dispute_type=payload.dispute_type,
+            violation_key=payload.violation_key,
+            additional_facts=payload.additional_facts,
+        )
         meta = app_core.DISPUTE_CATEGORIES[payload.dispute_type]
         return DisputeRepresentationResponse(
             letter_text=letter,
+            html_content=html_letter,
             dispute_type=payload.dispute_type,
             statutory_authority=meta["statutory_authority"],
             challan_number=payload.challan_number,

@@ -951,3 +951,108 @@ def parse_vehicle_registration(registration_number: str) -> dict[str, Any]:
         "statutory_note": "Registration format not recognized under standard State or Bharat (BH) formats.",
     }
 
+def generate_dispute_representation_html(
+    citizen_name: str,
+    vehicle_number: str,
+    challan_number: str,
+    challan_date: str,
+    state: str,
+    issuing_authority: str,
+    dispute_type: str,
+    violation_key: str | None = None,
+    additional_facts: str | None = None,
+) -> str:
+    """Generate a clean, printable court/commissioner-formatted HTML legal representation notice."""
+    plain_text = generate_dispute_representation(
+        citizen_name=citizen_name,
+        vehicle_number=vehicle_number,
+        challan_number=challan_number,
+        challan_date=challan_date,
+        state=state,
+        issuing_authority=issuing_authority,
+        dispute_type=dispute_type,
+        violation_key=violation_key,
+        additional_facts=additional_facts,
+    )
+    meta = DISPUTE_CATEGORIES.get(dispute_type, {})
+
+    html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Legal Representation - {challan_number}</title>
+<style>
+  body {{ font-family: 'Times New Roman', Times, serif; line-height: 1.6; color: #111; margin: 40px; }}
+  .header {{ text-align: center; border-bottom: 2px solid #333; padding-bottom: 12px; margin-bottom: 24px; }}
+  .header h2 {{ margin: 0; text-transform: uppercase; font-size: 1.3rem; letter-spacing: 1px; }}
+  .header p {{ margin: 4px 0 0; font-size: 0.95rem; color: #444; }}
+  .meta-box {{ background: #f9f9f9; border: 1px solid #ddd; padding: 12px 18px; margin-bottom: 20px; font-size: 0.95rem; }}
+  .meta-box table {{ width: 100%; border-collapse: collapse; }}
+  .meta-box td {{ padding: 4px 8px; vertical-align: top; }}
+  .content {{ font-size: 1rem; text-align: justify; }}
+  .citations {{ background: #f4f6f9; border-left: 4px solid #1a237e; padding: 10px 15px; margin: 15px 0; font-size: 0.95rem; }}
+  .signature {{ margin-top: 50px; display: flex; justify-content: space-between; }}
+  .sig-line {{ border-top: 1px solid #333; width: 220px; text-align: center; padding-top: 6px; font-weight: bold; }}
+  @media print {{
+    body {{ margin: 15mm 20mm; }}
+    .no-print {{ display: none; }}
+  }}
+</style>
+</head>
+<body>
+<div class="header">
+  <h2>Statutory Representation & Legal Dispute Notice</h2>
+  <p>Under the Motor Vehicles Act, 1988 (as amended) & Central Motor Vehicles Rules, 1989</p>
+</div>
+
+<div class="meta-box">
+  <table>
+    <tr><td><strong>To:</strong> {issuing_authority}</td><td><strong>Date:</strong> {challan_date}</td></tr>
+    <tr><td><strong>Applicant:</strong> {citizen_name}</td><td><strong>State / UT:</strong> {state}</td></tr>
+    <tr><td><strong>Vehicle No:</strong> {vehicle_number}</td><td><strong>Challan No:</strong> {challan_number}</td></tr>
+    <tr><td colspan="2"><strong>Grounds:</strong> {meta.get('title', dispute_type)}</td></tr>
+  </table>
+</div>
+
+<div class="content">
+  <p><strong>SUBJECT:</strong> FORMAL REPRESENTATION AGAINST UNJUSTIFIED E-CHALLAN NO. {challan_number} ISSUED FOR VEHICLE {vehicle_number}.</p>
+  
+  <p>Respected Authority,</p>
+  
+  <p>I, <strong>{citizen_name}</strong>, registered owner/driver of motor vehicle bearing registration number <strong>{vehicle_number}</strong>, hereby submit this formal legal representation challenging the validity of e-Challan No. <strong>{challan_number}</strong> dated <strong>{challan_date}</strong> issued by your jurisdiction.</p>
+
+  <div class="citations">
+    <strong>STATUTORY BASIS & LEGAL PROVISIONS:</strong><br>
+    {meta.get('statutory_authority', 'Motor Vehicles Act, 1988')}
+  </div>
+
+  <p><strong>GROUNDS OF REPRESENTATION:</strong></p>
+  <p>{meta.get('grounds', '')}</p>
+"""
+    if additional_facts and additional_facts.strip():
+        html_content += f"""
+  <p><strong>PARTICULAR FACTS OF THE INCIDENT:</strong></p>
+  <p>{additional_facts.strip()}</p>
+"""
+
+    html_content += f"""
+  <p><strong>PRAYER / RELIEF SOUGHT:</strong></p>
+  <p>In light of the statutory mandates, binding notifications, and lack of sustainable legal basis for the penalty as charged, it is respectfully prayed that your office may:</p>
+  <ul>
+    <li>Review the digital and video/photographic records associated with Challan No. {challan_number}.</li>
+    <li>Revoke, cancel, or re-compound the fine in strict compliance with the statutory provisions cited above.</li>
+    <li>Provide written communication of the disposal of this grievance.</li>
+  </ul>
+
+  <div class="signature">
+    <div>Date: {challan_date}<br>Place: {state}</div>
+    <div>
+      <div class="sig-line">{citizen_name}</div>
+      Applicant / Motorist
+    </div>
+  </div>
+</div>
+</body>
+</html>"""
+    return html_content
+

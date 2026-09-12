@@ -22,6 +22,7 @@ from app_core import (
     calculate_fine,
     calculate_multi_fine,
     generate_dispute_representation,
+    generate_dispute_representation_html,
     get_allowed_vehicle_types,
     get_compounding_comparison_matrix,
     get_source_details,
@@ -506,16 +507,37 @@ with tab2:
                         violation_key=selected_violation_key,
                         additional_facts=disp_narrative,
                     )
-                    st.success("✅ Formal Legal Representation Letter generated successfully!")
+                    html_notice = generate_dispute_representation_html(
+                        citizen_name=disp_citizen_name,
+                        vehicle_number=disp_vehicle_no,
+                        challan_number=disp_challan_no,
+                        challan_date=disp_date,
+                        state=disp_state,
+                        issuing_authority=disp_authority,
+                        dispute_type=selected_disp_type,
+                        violation_key=selected_violation_key,
+                        additional_facts=disp_narrative,
+                    )
+                    st.success("✅ Formal Legal Representation Letter & Notice generated successfully!")
                     st.code(letter_text, language="text")
 
-                    st.download_button(
-                        label="📥 Download Legal Representation Letter (.txt)",
-                        data=letter_text,
-                        file_name=f"legal_representation_{disp_challan_no.lower()}.txt",
-                        mime="text/plain",
-                        use_container_width=True,
-                    )
+                    col_dl_txt, col_dl_html = st.columns(2)
+                    with col_dl_txt:
+                        st.download_button(
+                            label="📥 Download Notice (.txt)",
+                            data=letter_text,
+                            file_name=f"legal_representation_{disp_challan_no.lower()}.txt",
+                            mime="text/plain",
+                            use_container_width=True,
+                        )
+                    with col_dl_html:
+                        st.download_button(
+                            label="🖨️ Download Printable Formal Notice (.html)",
+                            data=html_notice,
+                            file_name=f"legal_representation_{disp_challan_no.lower()}.html",
+                            mime="text/html",
+                            use_container_width=True,
+                        )
                 except CalculatorInputError as err:
                     st.error(f"Validation error: {err}")
 
