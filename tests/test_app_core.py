@@ -564,3 +564,11 @@ def test_validate_rto_directory_validation():
     with pytest.raises(DataValidationError, match="bh_series must be an object"):
         app_core._validate_rto_directory({"state_codes": {}, "rto_divisions": {}})
 
+def test_validate_traffic_stop_safeguards_validation():
+    """Verify _validate_traffic_stop_safeguards rejects malformed safeguard entries."""
+    with pytest.raises(DataValidationError, match="traffic_stop_safeguards must be a non-empty array"):
+        app_core._validate_traffic_stop_safeguards({})
+
+    with pytest.raises(DataValidationError, match="is missing title"):
+        app_core._validate_traffic_stop_safeguards([{"id": "bad_entry"}])
+

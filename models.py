@@ -326,3 +326,14 @@ class VehicleRegistrationResolution(BaseModel):
     jurisdiction_type: str
     statutory_note: str
 
+class TrafficStopSafeguardModel(BaseModel):
+    """Statutory citizen safeguard during on-the-road police traffic stops."""
+    model_config = ConfigDict(extra="forbid", frozen=True)
+
+    id: str
+    title: str
+    statutory_authority: str
+    summary: str
+    citizen_action: str
+    legal_citations: list[str]
+

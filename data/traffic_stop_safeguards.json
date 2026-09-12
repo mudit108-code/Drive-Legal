@@ -1,0 +1,57 @@
+[
+  {
+    "id": "key_seizure_prohibition",
+    "title": "Can a Police Officer Seize or Snatch Vehicle Keys?",
+    "statutory_authority": "Section 130 Motor Vehicles Act, 1988 & Supreme Court Guidelines",
+    "summary": "Traffic police officers do not possess statutory authority under the Motor Vehicles Act to physically snatch or confiscate vehicle keys from the ignition during a routine traffic stop.",
+    "citizen_action": "Politely inform the officer that key seizure is outside statutory enforcement procedure. You are legally required to stop the vehicle, turn off the engine, and present your documents, but keys remain your property unless the vehicle is formally impounded under Section 207 for specified grave offences.",
+    "legal_citations": [
+      "Section 130 MVA requires the driver to produce licenses and certificates on demand, but does not grant power to disable the vehicle by seizing keys.",
+      "Vehicle seizure is restricted to Section 207 MVA (driving without registration, permit, or fitness certificate) and requires a formal seizure memo (Zabti Nama) issued on the spot."
+    ]
+  },
+  {
+    "id": "officer_rank_requirement",
+    "title": "Which Officer Rank is Empowered to Issue On-the-Spot Fines?",
+    "statutory_authority": "Section 200 Motor Vehicles Act, 1988 & State Police Compounding Notifications",
+    "summary": "Only an officer of the rank of Assistant Sub-Inspector (ASI) or Sub-Inspector (SI) and above, equipped with an authorized government e-challan machine or official challan book, is legally empowered to compound offences on the spot.",
+    "citizen_action": "Check the rank insignia of the officer. Constables or Head Constables without an authorized ASI/SI supervising cannot unilaterally demand or collect compounding fines.",
+    "legal_citations": [
+      "Section 200(1) MVA specifies that compounding can only be performed by 'such officers or authorities as the State Government may, by notification in the Official Gazette, specify'.",
+      "State gazette notifications across Delhi, Maharashtra, Karnataka, and Tamil Nadu restrict compounding powers to officers of ASI rank and above."
+    ]
+  },
+  {
+    "id": "digilocker_document_validity",
+    "title": "What If an Officer Refuses DigiLocker / mParivahan Documents?",
+    "statutory_authority": "Rule 139 Central Motor Vehicles Rules (CMVR), 1989 & MoRTH Circular RT-11036/64/2017-MVL",
+    "summary": "Electronic driving licenses, registration certificates, insurance, and pollution certificates presented via DigiLocker or mParivahan carry full statutory legal equivalence to physical originals.",
+    "citizen_action": "Show the verified document inside the official DigiLocker or mParivahan app. If an officer insists on physical copies, cite Rule 139 CMVR and MoRTH Circular RT-11036/64/2017-MVL (dated 08-08-2018 and 19-11-2018).",
+    "legal_citations": [
+      "Rule 139 CMVR states that production of documents in electronic form through DigiLocker or mParivahan is legally valid.",
+      "Section 4 of the Information Technology Act, 2000 grants electronic records legal recognition on par with paper documents."
+    ]
+  },
+  {
+    "id": "towing_with_occupants_prohibition",
+    "title": "Can a Vehicle Be Towed While Passengers Are Inside?",
+    "statutory_authority": "Section 127 Motor Vehicles Act & Standard Police Towing Protocols",
+    "summary": "Traffic police and authorized towing contractors are strictly prohibited from hooking or towing any vehicle while a passenger, child, senior citizen, or domestic pet remains inside the vehicle.",
+    "citizen_action": "If a towing crane attempts to lift your car while occupied, inform the personnel immediately that towing an occupied vehicle violates Section 127 safety protocols and endangers life. If you arrive while the car is being clamped, you are entitled to have the clamp removed upon paying the designated no-parking fine without paying towing charges.",
+    "legal_citations": [
+      "Section 127 MVA regulates removal of abandoned or unattended vehicles; it does not apply to occupied vehicles where the driver is present and able to move the vehicle upon instruction.",
+      "Metropolitan traffic police standing orders require officers to verify the cabin is empty prior to crane winch engagement."
+    ]
+  },
+  {
+    "id": "recording_police_interaction",
+    "title": "Are Citizens Allowed to Video Record Traffic Stops?",
+    "statutory_authority": "Article 19(1)(a) Constitution of India & Public Accountability Directives",
+    "summary": "Citizens possess the democratic and constitutional right to video record public police interactions and traffic stops, provided they do not physically obstruct the officer from performing lawful duties.",
+    "citizen_action": "You may hold your phone and record audio/video of the encounter from a reasonable distance for personal protection and factual documentation. An officer cannot legally confiscate your phone or demand you delete footage without a judicial warrant.",
+    "legal_citations": [
+      "Freedom of expression and gathering information in public spaces under Article 19(1)(a) of the Constitution.",
+      "High Court rulings emphasize that public officials performing duties in public view have no expectation of privacy."
+    ]
+  }
+]

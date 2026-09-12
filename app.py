@@ -15,6 +15,7 @@ from app_core import (
     METADATA,
     NATIONAL_FINES,
     STATE_DATA,
+    TRAFFIC_STOP_SAFEGUARDS,
     VEHICLE_TYPES,
     CalculatorInputError,
     DISPUTE_CATEGORIES,
@@ -26,6 +27,7 @@ from app_core import (
     get_compounding_comparison_matrix,
     get_source_details,
     get_violation_options,
+    get_traffic_stop_safeguards,
     parse_vehicle_registration,
 )
 
@@ -454,6 +456,16 @@ with tab2:
     )
 
     st.markdown("---")
+    st.markdown("### 🚨 On-the-Road Police Stop Legal Safeguards")
+    st.caption("Immediate statutory protections under the Motor Vehicles Act, Supreme Court rulings, and MoRTH notifications when stopped by police.")
+    safeguards_list = get_traffic_stop_safeguards()
+    for sg in safeguards_list:
+        with st.expander(f"🛡️ **{sg['title']}** — *{sg['statutory_authority']}*"):
+            st.markdown(f"**Legal Rule:** {sg['summary']}")
+            st.markdown(f"**Action Motorist Can Take:** {sg['citizen_action']}")
+            st.caption(f"Citations: {', '.join(sg['legal_citations'])}")
+
+    st.markdown("---")
     st.markdown("### 🛡️ Motorist Rights & Dispute Redressal Guide")
     st.caption("Statutory protections, digital document validity, and grievance mechanisms under Indian law.")
     for right in CITIZEN_RIGHTS:
@@ -590,10 +602,11 @@ with tab4:
         st.markdown(f"- **{source['title']}**: {source['url']}")
     st.markdown("### Legal disclaimer")
     compounding_count = sum(1 for s in STATE_DATA.values() if s.get("compounding_schedule"))
-    c1, c2, c3, c4, c5, c6 = st.columns(6)
+    c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
     c1.metric("States covered", "28")
     c2.metric("Union Territories", "8")
     c3.metric("Violation records", str(len(NATIONAL_FINES)))
     c4.metric("Legal sections", str(len(LEGAL_SECTIONS)))
     c5.metric("Compounding states", str(compounding_count))
     c6.metric("Citizen rights", str(len(CITIZEN_RIGHTS)))
+    c7.metric("Police safeguards", str(len(TRAFFIC_STOP_SAFEGUARDS)))

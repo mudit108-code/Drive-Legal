@@ -109,6 +109,18 @@ def _validate_rto_directory(rto_dir: Any) -> None:
     _require("rto_divisions" in rto_dir and isinstance(rto_dir["rto_divisions"], dict), "rto_divisions must be an object")
 
 
+def _validate_traffic_stop_safeguards(safeguards: Any) -> None:
+    _require(isinstance(safeguards, list) and safeguards, "traffic_stop_safeguards must be a non-empty array")
+    ids = []
+    for index, item in enumerate(safeguards):
+        _require(isinstance(item, dict), f"safeguard {index} must be an object")
+        for field in ("id", "title", "statutory_authority", "summary", "citizen_action", "legal_citations"):
+            _require(bool(item.get(field)), f"safeguard {index} is missing {field}")
+        _require(isinstance(item["legal_citations"], list) and item["legal_citations"], f"legal_citations must be a list in safeguard {index}")
+        ids.append(item["id"])
+    _require(len(ids) == len(set(ids)), "traffic stop safeguard IDs must be unique")
+
+
 def _validate_citizen_rights(citizen_rights: Any) -> None:
     _require(isinstance(citizen_rights, list) and citizen_rights, "citizen_rights must be a non-empty array")
     ids = []
@@ -322,6 +334,8 @@ LEGAL_SECTIONS = _read_json("legal_sections.json")
 _validate_legal_sections(LEGAL_SECTIONS)
 CITIZEN_RIGHTS = _read_json("citizen_rights.json")
 _validate_citizen_rights(CITIZEN_RIGHTS)
+TRAFFIC_STOP_SAFEGUARDS = _read_json("traffic_stop_safeguards.json")
+_validate_traffic_stop_safeguards(TRAFFIC_STOP_SAFEGUARDS)
 RTO_DIRECTORY = _read_json("rto_directory.json")
 _validate_rto_directory(RTO_DIRECTORY)
 ALL_STATES = sorted(STATE_DATA)
@@ -950,4 +964,8 @@ def parse_vehicle_registration(registration_number: str) -> dict[str, Any]:
         "jurisdiction_type": "unknown",
         "statutory_note": "Registration format not recognized under standard State or Bharat (BH) formats.",
     }
+
+def get_traffic_stop_safeguards() -> list[dict[str, Any]]:
+    """Return verified statutory citizen safeguards for on-the-road traffic stops."""
+    return list(TRAFFIC_STOP_SAFEGUARDS)
 
