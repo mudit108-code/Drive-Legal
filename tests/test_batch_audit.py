@@ -121,3 +121,27 @@ def test_api_fleet_sample_csv_endpoint():
     data = response.json()
     assert data["filename"] == "sample_fleet_challans.csv"
     assert "challan_id,vehicle_number,vehicle_type" in data["csv_content"]
+
+def test_generate_dispute_representation_html():
+    """Verify generation of printable HTML formal dispute notice with legal citations."""
+    html = app_core.generate_dispute_representation_html(
+        citizen_name="Priya Sharma",
+        vehicle_number="KA-01-AB-1234",
+        challan_number="KA12345678",
+        challan_date="2026-09-08",
+        state="Karnataka",
+        issuing_authority="Bangalore Traffic Police",
+        dispute_type="digilocker_rejection",
+        violation_key="no_dl",
+        additional_facts="Showed valid original Driving Licence on Government DigiLocker application.",
+    )
+
+    assert "<!DOCTYPE html>" in html
+    assert "Priya Sharma" in html
+    assert "KA-01-AB-1234" in html
+    assert "KA12345678" in html
+    assert "Bangalore Traffic Police" in html
+    assert "Rule 139 CMVR" in html or "Rule 139 Central Motor Vehicles Rules" in html or "Rule 139" in html
+    assert "DigiLocker" in html
+    assert "Showed valid original Driving Licence" in html
+
