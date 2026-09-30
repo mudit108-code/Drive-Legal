@@ -1,0 +1,34 @@
+{
+  "statutory_framework": {
+    "mva_section": "Section 134A, Motor Vehicles Act, 1988 (as inserted by Motor Vehicles Amendment Act, 2019)",
+    "central_notification": "MoRTH Notification S.O. 2187(E) dated 29th September 2020",
+    "supreme_court_judgment": "SaveLIFE Foundation & Anr. v. Union of India & Ors., (2016) 7 SCC 700",
+    "golden_hour_scheme": "MoRTH Scheme for Financial Support to Good Samaritans"
+  },
+  "charter_guarantees": [
+    {
+      "guarantee_id": "civil_criminal_immunity",
+      "title": "Complete Civil and Criminal Immunity",
+      "statutory_basis": "Section 134A(1) MVA 1988",
+      "clause": "A Good Samaritan shall not be liable for any civil or criminal action for any injury to or death of the victim of an accident involving a motor vehicle, which resulted from the Good Samaritan's negligence in acting or failing to act while rendering emergency medical or non-medical care or assistance."
+    },
+    {
+      "guarantee_id": "anonymity_protection",
+      "title": "Right to Total Anonymity & Voluntary Details",
+      "statutory_basis": "MoRTH S.O. 2187(E) Clause 3",
+      "clause": "A Good Samaritan who respects or transports an injured person shall not be compelled to disclose their name, identity, address or other personal details to police, hospital administration, or law enforcement."
+    },
+    {
+      "guarantee_id": "hospital_immediate_care",
+      "title": "Mandatory Hospital Admission Without Deposit",
+      "statutory_basis": "Supreme Court Directives & MoRTH Rules",
+      "clause": "All government and private hospitals are legally mandated to admit and provide immediate emergency first-aid without demanding advance cash deposit from the rescuer."
+    },
+    {
+      "guarantee_id": "police_detention_prohibition",
+      "title": "Strict Ban on Police Detention & Coercion",
+      "statutory_basis": "MoRTH S.O. 2187(E) Clause 4",
+      "clause": "Police authorities are strictly forbidden from detaining a Good Samaritan at the police station or scene of accident. Examination as a witness is strictly voluntary and at the choice of the Good Samaritan."
+    }
+  ]
+}

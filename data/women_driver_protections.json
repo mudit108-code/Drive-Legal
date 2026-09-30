@@ -1,0 +1,39 @@
+{
+  "statutory_references": {
+    "night_arrest_ban": "Section 46(4), Code of Criminal Procedure, 1973 / Section 35(1), Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "female_search_rule": "Section 51(2), Code of Criminal Procedure, 1973 / Section 49(2), Bharatiya Nagarik Suraksha Sanhita, 2023",
+    "interrogation_at_residence": "Section 160(1), CrPC / Section 175(1), BNSS",
+    "legal_representation": "Article 22(1), Constitution of India & Section 303 CrPC / Section 340 BNSS",
+    "emergency_helpline": "1091 (Women in Distress) / 112 (National Emergency Emergency Response Support System)"
+  },
+  "protective_rules": [
+    {
+      "id": "night_time_detention_prohibition",
+      "title": "Strict Prohibition on Night-Time Arrest / Detention",
+      "statutory_citation": "Sec 46(4) CrPC / Sec 35(1) BNSS",
+      "rule": "No woman can be arrested or detained after sunset and before sunrise, save under extraordinary circumstances with prior written permission of a Judicial Magistrate First Class.",
+      "citizen_instruction": "If stopped at night by male officers, you have the statutory right to remain inside your locked vehicle, request the immediate presence of a female officer, and call 112."
+    },
+    {
+      "id": "mandatory_female_officer_search",
+      "title": "Mandatory Female Officer for Physical Search",
+      "statutory_citation": "Sec 51(2) CrPC / Sec 49(2) BNSS",
+      "rule": "Whenever it is necessary to cause a female to be searched, the search shall be made strictly by another female with strict regard to decency.",
+      "citizen_instruction": "Male police officers or home guards are strictly forbidden from physically frisking a woman driver or passenger."
+    },
+    {
+      "id": "police_station_summons_exemption",
+      "title": "Exemption from Night Police Station Visit",
+      "statutory_citation": "Sec 160(1) CrPC / Sec 175(1) BNSS",
+      "rule": "No male person under 15 years, or woman of any age, shall be required to attend at any place other than the place in which such person resides for questioning.",
+      "citizen_instruction": "Police cannot force a woman driver to come to the police station for compounding traffic offences at night."
+    },
+    {
+      "id": "right_to_record_interaction",
+      "title": "Right to Video Record Public Traffic Interaction",
+      "statutory_citation": "Fundamental Rights (Art 19 & 21) & MoRTH Citizen Guidelines",
+      "rule": "Recording an on-duty public servant performing public duties in a public place is legal and protected, provided it does not obstruct their official duty.",
+      "citizen_instruction": "You may keep your phone camera on or livestream the interaction for your safety."
+    }
+  ]
+}
