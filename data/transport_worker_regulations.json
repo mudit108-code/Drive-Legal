@@ -1,0 +1,17 @@
+{
+  "statutory_framework": {
+    "act_name": "Motor Transport Workers Act, 1961",
+    "section_13": "Section 13 (Hours of work: Max 8 hours/day and 48 hours/week, extendable to 10 hours for long distance)",
+    "section_15": "Section 15 (Daily intervals for rest: Max 5 hours continuous work without min 30 minutes rest)",
+    "section_16": "Section 16 (Spreadover: Max 12 hours/day including rest intervals)",
+    "penalty_section": "Section 31 (Penalties for contravention of provisions regarding employment)"
+  },
+  "statutory_limits": {
+    "max_continuous_driving_hours": 5.0,
+    "min_rest_interval_minutes": 30,
+    "max_daily_hours_standard": 8.0,
+    "max_daily_hours_long_distance": 10.0,
+    "max_weekly_hours": 48.0,
+    "max_daily_spreadover_hours": 12.0
+  }
+}

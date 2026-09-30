@@ -1,0 +1,27 @@
+{
+  "statutory_framework": {
+    "cmvr_rules": "Rules 129 to 137, Central Motor Vehicles Rules, 1989",
+    "rule_9_endorsement": "Rule 9, CMVR 1989 (Specialized 3-day training endorsement for transporting hazardous materials)",
+    "rule_129": "Rule 129, CMVR 1989 (Emergency Information Panel - EIP specifications)",
+    "rule_131": "Rule 131, CMVR 1989 (Driver responsibilities and TREMCARD mandate)",
+    "penalty_provision": "Section 190(3), Motor Vehicles Act, 1988 (Contravention of dangerous goods carriage provisions: fine up to ₹10,000 and/or 1 year imprisonment)"
+  },
+  "un_hazard_classes": {
+    "1": { "name": "Explosives", "example": "Dynamite, fireworks, ammunition" },
+    "2": { "name": "Gases (Compressed/Liquefied)", "example": "LPG, CNG, Oxygen, Chlorine" },
+    "3": { "name": "Flammable Liquids", "example": "Petrol, Diesel, Kerosene, Ethanol" },
+    "4": { "name": "Flammable Solids", "example": "Phosphorus, Sulfur, Matches" },
+    "5": { "name": "Oxidizing Substances & Organic Peroxides", "example": "Hydrogen peroxide, Ammonium nitrate" },
+    "6": { "name": "Toxic and Infectious Substances", "example": "Cyanide, Pesticides, Bio-waste" },
+    "7": { "name": "Radioactive Material", "example": "Medical isotopes, Uranium" },
+    "8": { "name": "Corrosive Substances", "example": "Sulfuric acid, Hydrochloric acid" },
+    "9": { "name": "Miscellaneous Dangerous Substances", "example": "Lithium batteries, Dry ice, Asbestos" }
+  },
+  "safety_equipment_weights": {
+    "has_eip_display": 25,
+    "has_tremcard": 20,
+    "has_hazardous_dl_endorsement": 25,
+    "has_spark_arrester": 15,
+    "has_fire_extinguisher": 15
+  }
+}
