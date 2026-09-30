@@ -1,0 +1,64 @@
+{
+  "statutory_framework": {
+    "cmvr_rule": "Rule 167A, Central Motor Vehicles Rules, 1989",
+    "cmvr_notification": "MoRTH G.S.R. 575(E) dated 11th August 2021",
+    "mva_section": "Section 136A, Motor Vehicles Act, 1988 (inserted via 2019 Amendment)",
+    "legal_metrology_act": "Legal Metrology Act, 2009 and Legal Metrology (General) Rules, 2011",
+    "evidence_act_section": "Section 65B, Indian Evidence Act, 1872 / Section 63, Bharatiya Sakshya Adhiniyam, 2023",
+    "rti_section": "Section 6(1), Right to Information Act, 2005"
+  },
+  "mandatory_evidentiary_criteria": [
+    {
+      "criterion_id": "clear_plate_photo",
+      "title": "Clear Vehicle & Number Plate Photograph",
+      "statutory_basis": "CMVR Rule 167A(4)(a)",
+      "description": "Clear photographic or video evidence showing the vehicle and legible number plate at the time of violation.",
+      "weight": 25
+    },
+    {
+      "criterion_id": "speed_measurement_proof",
+      "title": "Speed Measurement & Limit Differential",
+      "statutory_basis": "CMVR Rule 167A(4)(b)",
+      "description": "Recorded speed reading alongside the officially notified speed limit for that road stretch.",
+      "weight": 20
+    },
+    {
+      "criterion_id": "timestamp_and_gps",
+      "title": "Date, Time & Exact Geographical Location",
+      "statutory_basis": "CMVR Rule 167A(4)(c)",
+      "description": "Precise timestamp down to the minute/second and GPS coordinates or distinct road milestone.",
+      "weight": 15
+    },
+    {
+      "criterion_id": "statutory_citation",
+      "title": "Specific Legal Provision Citation",
+      "statutory_basis": "CMVR Rule 167A(4)(d)",
+      "description": "Specific sections of MVA 1988 and rules of CMVR 1989 explicitly referenced on the notice.",
+      "weight": 15
+    },
+    {
+      "criterion_id": "evidence_act_compliance",
+      "title": "Electronic Record Admissibility Certification",
+      "statutory_basis": "Sec 65B IEA / Sec 63 BSA & CMVR Rule 167A(6)",
+      "description": "Certificate attesting integrity of electronic data acquisition without digital tampering.",
+      "weight": 10
+    },
+    {
+      "criterion_id": "annual_calibration_status",
+      "title": "Annual Legal Metrology Calibration Certificate",
+      "statutory_basis": "Legal Metrology Act 2009 & MoRTH Advisory",
+      "description": "Speed camera or radar speed gun must hold valid calibration certificate within 12 months.",
+      "weight": 15
+    }
+  ],
+  "rti_application_template": {
+    "subject": "Application under Section 6(1) of the Right to Information Act, 2005 regarding Speed Camera Calibration and Certification Details",
+    "standard_fee": "Rs 10/- via Postal Order / Court Fee Stamp / Online RTI Portal",
+    "questions": [
+      "Whether the speed enforcement device/radar/camera used to record Notice No. {challan_no} possesses a valid verification and calibration certificate issued by the Controller of Legal Metrology as required under the Legal Metrology Act, 2009.",
+      "Provide a certified true copy of the calibration certificate of the said camera/device in force on the date of alleged offence ({violation_date}).",
+      "Provide the permissible margin of error (tolerance percentage) certified by the manufacturer/certifying agency for the said speed monitoring device.",
+      "Provide the date of last servicing and calibration test conducted on the specific device before {violation_date}."
+    ]
+  }
+}
