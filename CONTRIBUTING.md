@@ -14,6 +14,12 @@ Use the central Act text and the applicable state or local notification. Record 
 
 For quantity-based offences, use the supported `fine_basis` values and add the required quantity field. Do not use vehicle multipliers to invent a statutory amount. Vehicle multipliers are permitted only when a data record explicitly opts in and has a supporting source.
 
+## Adding a feature (conflict-free layout)
+
+Put each new feature in its own module, `features/<feature_name>.py`. The module owns its Pydantic models, data loading and validation, calculator logic and an optional FastAPI `router`. It is auto-discovered: `api.py` mounts its router, and its names stay available as `app_core.<name>` and `models.<name>`.
+
+Do not edit `app_core.py`, `api.py` or `models.py` for a new feature. Because every pull request then only adds new files (the module, its `data/*.json` and its tests), open PRs never conflict when another one is merged.
+
 ## Tests and checks
 
 Install development dependencies and run the checks before opening a pull request:
