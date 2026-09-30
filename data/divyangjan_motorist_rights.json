@@ -1,0 +1,98 @@
+{
+  "gst_concession": {
+    "statutory_authority": "Ministry of Finance Notification No. 14/2019-Central Tax (Rate) & MoHI Guidelines",
+    "standard_passenger_gst_pct": 28.0,
+    "concessional_gst_pct": 18.0,
+    "saving_pct": 10.0,
+    "eligible_fuel_rules": {
+      "petrol": {
+        "max_engine_cc": 1200,
+        "max_length_mm": 4000
+      },
+      "diesel": {
+        "max_engine_cc": 1500,
+        "max_length_mm": 4000
+      },
+      "cng": {
+        "max_engine_cc": 1200,
+        "max_length_mm": 4000
+      },
+      "electric": {
+        "max_engine_cc": 0,
+        "max_length_mm": 4000
+      }
+    },
+    "min_disability_pct": 40.0,
+    "required_certification": "UDID (Unique Disability ID) Card or State Medical Board Certificate showing 40% or higher physical disability"
+  },
+  "road_tax_exemptions": {
+    "Delhi": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "Delhi Motor Vehicles Taxation Act, Section 13",
+      "conditions": "Adapted vehicle owned and driven by or used for person with >= 40% physical disability."
+    },
+    "Maharashtra": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "Maharashtra Motor Vehicles Tax Act, Section 13(1)",
+      "conditions": "Invalid carriage / adapted vehicle specially constructed/adapted for Divyangjan."
+    },
+    "Karnataka": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "Karnataka Motor Vehicles Taxation Act, Section 16",
+      "conditions": "Complete exemption from lifetime motor vehicle tax for adapted vehicles."
+    },
+    "Tamil Nadu": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "Tamil Nadu Motor Vehicles Taxation Act, Section 13",
+      "conditions": "100% tax exemption for adapted motor vehicles with valid RTO endorsement."
+    },
+    "Uttar Pradesh": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "UP Motor Vehicles Taxation Act, Section 14",
+      "conditions": "Zero road tax for adapted vehicles registered in the name of person with benchmark disability."
+    },
+    "Gujarat": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "Gujarat Motor Vehicles Tax Act, Section 13",
+      "conditions": "Full exemption on one personal adapted vehicle per person with benchmark disability."
+    },
+    "Haryana": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "Haryana Motor Vehicles Taxation Act, Section 15",
+      "conditions": "100% exemption on road tax for adapted passenger cars."
+    },
+    "Kerala": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "Kerala Motor Vehicles Taxation Act, Section 22",
+      "conditions": "Full exemption from one-time road tax for adapted vehicles."
+    },
+    "West Bengal": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "West Bengal Motor Vehicles Tax Act, Section 13",
+      "conditions": "Exemption granted for invalid carriages and modified adapted vehicles."
+    },
+    "Telangana": {
+      "exemption_pct": 100.0,
+      "statutory_rule": "Telangana Motor Vehicles Taxation Act, Section 9",
+      "conditions": "Life tax exemption for motor vehicles specially adapted for differently-abled citizens."
+    }
+  },
+  "toll_exemption": {
+    "statutory_rule": "Rule 11, National Highways Fee (Determination of Rates and Collection) Rules, 2008 & NHAI Guidelines",
+    "fee_concession_pct": 100.0,
+    "eligibility": "Mechanical vehicles specially designed and constructed, or adapted, for the use of persons suffering from physical defect or disability.",
+    "procedure": "Apply for Divyangjan Exemption FASTag via IHMCL/NHAI portal submitting RC with 'Adapted Vehicle' endorsement and UDID."
+  },
+  "alteration_immunity": {
+    "statutory_basis": "Proviso to Section 52(1), Motor Vehicles Act 1988",
+    "protection": "Explicit statutory exemption from the general prohibition on vehicle modification.",
+    "details": "Under Section 52(1) proviso, alterations to a motor vehicle to facilitate its use as an adapted vehicle by a person with disability are strictly permitted and cannot be penalised under Section 182A(4) (illegal modification penalty up to Rs 1,00,000 / 1 year imprisonment)."
+  },
+  "checklist": [
+    "Unique Disability ID (UDID) Card with >= 40% locomotor disability",
+    "Certificate from Ministry of Heavy Industries (MoHI) for 18% GST concession (applied online via dhi.nic.in)",
+    "RTO Form 20 / Form 26 with 'Adapted Vehicle' category endorsement on RC",
+    "Authorized retrofitment test certificate from ARAI/ICAT approved kit installer (if modified post-factory)",
+    "IHMCL Exemption FASTag application for 100% toll fee waiver on National Highways"
+  ]
+}

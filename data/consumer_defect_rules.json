@@ -1,0 +1,90 @@
+{
+  "statutory_framework": {
+    "act": "Consumer Protection Act, 2019",
+    "sections": {
+      "defect_definition": "Section 2(10) — Defect in goods",
+      "product_liability": "Chapter VI, Section 84 — Liability of product manufacturer",
+      "dealer_liability": "Section 86 — Liability of product service provider / dealer",
+      "complaint_filing": "Section 35 — Manner in which complaint shall be made",
+      "relief_remedies": "Section 39 — Findings of District Commission and orders",
+      "limitation_period": "Section 69 — 2-year limitation period from date of cause of action"
+    }
+  },
+  "pecuniary_jurisdiction": {
+    "District Commission": {
+      "max_claim_amount": 5000000.0,
+      "description": "District Consumer Disputes Redressal Commission (claims up to Rs 50 Lakhs)"
+    },
+    "State Commission": {
+      "min_claim_amount": 5000000.01,
+      "max_claim_amount": 20000000.0,
+      "description": "State Consumer Disputes Redressal Commission (claims from Rs 50 Lakhs up to Rs 2 Crores)"
+    },
+    "National Commission": {
+      "min_claim_amount": 20000000.01,
+      "description": "National Consumer Disputes Redressal Commission (NCDRC) (claims exceeding Rs 2 Crores)"
+    }
+  },
+  "defect_categories": {
+    "transmission_failure": {
+      "title": "Transmission & Powertrain Systemic Defect",
+      "severity": "critical",
+      "remedies": [
+        "Full vehicle replacement",
+        "Full refund with 18% interest per annum",
+        "Compensation for mental agony and loss of use"
+      ],
+      "benchmark_citations": "Tata Motors Ltd. v. Rajesh Tyagi & Anr. (NCDRC) — Recurring powertrain defects warrant full vehicle replacement."
+    },
+    "brake_engine_hazard": {
+      "title": "Braking / Steering / Engine Thermal Runaway Hazard",
+      "severity": "life_threatening",
+      "remedies": [
+        "Immediate vehicle replacement",
+        "Full refund of purchase invoice",
+        "Exemplary punitive damages under Section 39(1)(d) CPA"
+      ],
+      "benchmark_citations": "Maruti Udyog Ltd. v. Susheel Kumar Gabgotra (Supreme Court of India) — Defective parts rendering vehicle unsafe must be remedied or vehicle replaced."
+    },
+    "electrical_fire_hazard": {
+      "title": "High Voltage Battery / Electrical Harness / Short Circuit Hazard",
+      "severity": "life_threatening",
+      "remedies": [
+        "Full refund with interest",
+        "Vehicle replacement",
+        "Reimbursement of safety inspection and storage costs"
+      ],
+      "benchmark_citations": "Section 84(1)(c) CPA 2019 — Defect in design and failure to conform to express warranty of vehicle safety."
+    },
+    "structural_chassis_defect": {
+      "title": "Chassis Rusting / Subframe Misalignment / Airbag Failure",
+      "severity": "critical",
+      "remedies": [
+        "Full vehicle replacement",
+        "Full refund of purchase consideration",
+        "Damages under Section 84 Product Liability"
+      ],
+      "benchmark_citations": "Section 2(10) & 84 CPA 2019 — Structural defect in design or deviation from manufacturing specifications."
+    },
+    "chronic_unresolved_glitch": {
+      "title": "Recurring Chronic Glitches (>3 Repair Attempts or >30 Days Off Road)",
+      "severity": "high",
+      "remedies": [
+        "Full vehicle replacement or refund",
+        "Compensation for downtime and taxi/commute expenses",
+        "Litigation costs"
+      ],
+      "benchmark_citations": "Hyundai Motor India Ltd. v. Shailendra Bhatnagar (Supreme Court of India, 2022) — Recurring failure to rectify inherent manufacturing defect constitutes deficiency of service."
+    }
+  },
+  "notice_standards": {
+    "statutory_cure_period_days": 15,
+    "mandatory_clauses": [
+      "Statement of vehicle identity (VIN, Engine No, Invoice, Reg No)",
+      "Chronological ledger of job cards and repair attempts",
+      "Statutory notice under Section 84 and 35 of the Consumer Protection Act, 2019",
+      "Formal demand for cure/replacement/refund within 15 days",
+      "Notice of intention to approach competent Consumer Commission with costs and exemplary damages"
+    ]
+  }
+}
