@@ -1,0 +1,20 @@
+{
+  "statutory_framework": {
+    "standard_code": "AIS-063 (Automotive Industry Standard: Code of Practice for Construction of School Buses)",
+    "supreme_court_ruling": "M.S. Grewal & Ors. v. Deep Chand Sood & Ors., (2001) 8 SCC 151",
+    "cmvr_rule": "Rule 125C, Central Motor Vehicles Rules, 1989",
+    "speed_governor_rule": "Rule 118, Central Motor Vehicles Rules, 1989"
+  },
+  "checklist_items": [
+    { "id": "golden_yellow_livery", "title": "Golden Yellow Livery & 'School Bus' Signage", "weight": 10, "description": "Bus painted in golden yellow with prominent 'SCHOOL BUS' in bold black letters on front and rear." },
+    { "id": "speed_governor_40kmh", "title": "Speed Limiting Governor Capped at 40 km/h", "weight": 10, "description": "Mandatory speed governor or ECU speed limiter limiting maximum speed to 40 km/h." },
+    { "id": "horizontal_window_grills", "title": "Horizontal Window Safety Grills", "weight": 10, "description": "Windows fitted with horizontal safety grills/mesh to prevent children protruding limbs." },
+    { "id": "fire_extinguisher_isi", "title": "Serviceable ISI Certified Fire Extinguisher", "weight": 10, "description": "At least one ABC powder fire extinguisher of 2kg capacity mounted near driver." },
+    { "id": "first_aid_box", "title": "Fully Stocked First Aid Kit", "weight": 10, "description": "Kit containing unexpired antiseptic, sterile gauze, bandages, and burn ointment." },
+    { "id": "emergency_exit_door", "title": "Emergency Exit Door with Audible Cabin Alarm", "weight": 10, "description": "Functional rear or side emergency door with clearly marked opening mechanism and driver alarm." },
+    { "id": "gps_and_cctv", "title": "Functional GPS Tracking & Interior CCTV", "weight": 10, "description": "MoRTH AIS-140 compliant vehicle tracking unit and internal surveillance cameras." },
+    { "id": "reliable_door_locks", "title": "Reliable Mechanical Door Safety Locks", "weight": 10, "description": "Doors fitted with safe locks and handles operable only by the attendant or driver." },
+    { "id": "qualified_conductor_attendant", "title": "Trained Conductor / Female Attendant On Board", "weight": 10, "description": "Qualified attendant present in bus to assist children during boarding and deboarding." },
+    { "id": "driver_experience_5yr", "title": "Driver with Min 5 Years Clean Commercial Record", "weight": 10, "description": "Driver must possess valid transport licence for min 5 years without major violation record." }
+  ]
+}

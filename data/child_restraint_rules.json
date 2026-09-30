@@ -1,0 +1,44 @@
+{
+  "statutory_framework": {
+    "mva_section": "Section 194B(2), Motor Vehicles Act, 1988",
+    "penalty_amount": 1000,
+    "two_wheeler_child_rule": "Rule 138(7), Central Motor Vehicles Rules, 1989 (MoRTH G.S.R. 1361(E))",
+    "max_two_wheeler_speed_with_child": 40
+  },
+  "guidelines_by_age": {
+    "infant": {
+      "age_range": "0 to 2 years",
+      "recommended_system": "Rear-Facing Child Safety Seat (CRS)",
+      "mounting": "Rear passenger seat secured via ISOFIX anchors or 3-point adult seatbelt",
+      "legal_mandate": "Section 194B(2) MVA 1988 — ₹1,000 fine for non-compliance."
+    },
+    "toddler": {
+      "age_range": "2 to 4 years",
+      "recommended_system": "Forward-Facing Child Restraint System with 5-point harness",
+      "mounting": "Rear passenger seat secured via top tether and ISOFIX",
+      "legal_mandate": "Section 194B(2) MVA 1988 — ₹1,000 fine for non-compliance."
+    },
+    "young_child": {
+      "age_range": "4 to 8 years",
+      "recommended_system": "Booster Seat / High-Back Booster Cushion",
+      "mounting": "Rear passenger seat positioning vehicle lap-and-shoulder belt correctly over chest",
+      "legal_mandate": "Section 194B(2) MVA 1988 — ₹1,000 fine for non-compliance."
+    },
+    "adolescent": {
+      "age_range": "8 to 14 years",
+      "recommended_system": "Standard Vehicle Lap-and-Shoulder Safety Seatbelt",
+      "mounting": "Rear passenger seat; front seat strictly discouraged until 12+ years",
+      "legal_mandate": "Section 194B(2) MVA 1988 — ₹1,000 fine for non-compliance."
+    }
+  },
+  "two_wheeler_pillion_child": {
+    "applicable_age_range": "9 months to 4 years",
+    "statutory_rule": "Rule 138(7) CMVR 1989",
+    "mandatory_requirements": [
+      "Safety harness securing child to driver (Bureau of Indian Standards BIS certified)",
+      "Crash helmet matching child head dimensions (ISI marked)",
+      "Vehicle speed must strictly not exceed 40 km/h when carrying child pillion"
+    ],
+    "penalty": "Fine under Section 177 / 194B(2) MVA plus driving licence suspension for 3 months under Sec 19 MVA."
+  }
+}

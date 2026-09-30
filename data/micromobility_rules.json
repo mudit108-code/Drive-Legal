@@ -1,0 +1,19 @@
+{
+  "statutory_framework": {
+    "cmvr_rule": "Rule 2(u), Central Motor Vehicles Rules, 1989",
+    "mva_definition_section": "Section 2(28), Motor Vehicles Act, 1988 (Definition of 'Motor Vehicle')",
+    "exemption_status": "Excluded from statutory definition of Motor Vehicle if conditions in Rule 2(u) are met"
+  },
+  "statutory_ceilings": {
+    "max_continuous_rated_power_watts": 250.0,
+    "max_cut_off_speed_kmh": 25.0
+  },
+  "legal_exemptions": {
+    "driving_licence_required": false,
+    "registration_number_plate_required": false,
+    "motor_vehicle_road_tax": false,
+    "mandatory_third_party_insurance": false,
+    "mva_helmet_fine_applicable": false
+  },
+  "statutory_advisory": "Vehicles satisfying CMVR Rule 2(u) (<= 250W power and <= 25 km/h cut-off speed) are classified as non-motorised cycles/carriages under law. Traffic police cannot demand Driving Licence, Registration Certificate, or levy MVA helmet fines under Section 194D."
+}
