@@ -1,0 +1,36 @@
+{
+  "statutory_framework": {
+    "scrappage_rules": "Motor Vehicles (Registration and Functions of Vehicle Scrapping Facility) Rules, 2021",
+    "notification_id": "MoRTH G.S.R. 653(E) dated 23rd September 2021",
+    "cmvr_registration_rule": "Rule 52, Central Motor Vehicles Rules, 1989",
+    "cod_tradability": "Certificate of Deposit (CoD) is electronically tradeable and transferable under MoRTH Digi-Scrap Portal"
+  },
+  "scrappage_parameters": {
+    "scrap_value_rate_pct": 5.0,
+    "oem_discount_rate_pct": 5.0,
+    "road_tax_rebate_non_transport_pct": 25.0,
+    "road_tax_rebate_transport_pct": 15.0,
+    "registration_fee_waiver": true,
+    "min_age_years_non_transport": 15,
+    "min_age_years_transport": 10
+  },
+  "registration_fee_benchmarks": {
+    "Two-Wheeler": 300,
+    "Three-Wheeler / Auto": 600,
+    "Light Motor Vehicle (Car)": 1000,
+    "Medium Motor Vehicle": 1500,
+    "Heavy Motor Vehicle": 2000,
+    "Transport / Commercial": 1500
+  },
+  "estimated_road_tax_rates_pct": {
+    "Delhi": 10.0,
+    "Maharashtra": 11.0,
+    "Karnataka": 13.0,
+    "Tamil Nadu": 10.0,
+    "Uttar Pradesh": 9.0,
+    "Gujarat": 8.0,
+    "Rajasthan": 10.0,
+    "Kerala": 11.0,
+    "default": 10.0
+  }
+}

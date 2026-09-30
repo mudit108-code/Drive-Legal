@@ -1,0 +1,81 @@
+{
+  "statutory_framework": {
+    "permit_exemption_notification": "MoRTH Notification S.O. 3064(E) dated 18th October 2018",
+    "permit_exemption_provision": "Section 66(1), Motor Vehicles Act, 1988 — Commercial Battery Operated Vehicles exempt from statutory permits",
+    "green_plate_specification": "Rule 50, Central Motor Vehicles Rules, 1989 — Green background with white numerals (private) and yellow numerals (commercial)"
+  },
+  "state_incentives": {
+    "Delhi": {
+      "policy_name": "Delhi Electric Vehicles Policy",
+      "road_tax_concession_pct": 100.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    },
+    "Maharashtra": {
+      "policy_name": "Maharashtra EV Policy",
+      "road_tax_concession_pct": 100.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    },
+    "Karnataka": {
+      "policy_name": "Karnataka Electric Vehicle Policy",
+      "road_tax_concession_pct": 100.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    },
+    "Tamil Nadu": {
+      "policy_name": "Tamil Nadu Electric Vehicles Policy",
+      "road_tax_concession_pct": 100.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    },
+    "Uttar Pradesh": {
+      "policy_name": "UP EV Manufacturing and Mobility Policy",
+      "road_tax_concession_pct": 100.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    },
+    "Gujarat": {
+      "policy_name": "Gujarat Electric Vehicle Policy",
+      "road_tax_concession_pct": 100.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    },
+    "Rajasthan": {
+      "policy_name": "Rajasthan EV Policy",
+      "road_tax_concession_pct": 100.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    },
+    "Kerala": {
+      "policy_name": "Kerala EV Policy (50% Concession)",
+      "road_tax_concession_pct": 50.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    },
+    "default": {
+      "policy_name": "Central MoRTH National EV Guidelines",
+      "road_tax_concession_pct": 100.0,
+      "registration_fee_concession_pct": 100.0,
+      "permit_exemption_active": true,
+      "toll_exemption": false,
+      "zero_emission_urban_delivery": true
+    }
+  }
+}
