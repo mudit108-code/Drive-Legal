@@ -17,6 +17,13 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
 
+
+def __getattr__(name: str) -> Any:
+    """Expose names defined by drop-in ``features/`` modules as ``app_core.<name>``."""
+    import features
+
+    return features.lookup(name)
+
 EXPECTED_STATES = frozenset(
     {
         "Andhra Pradesh",

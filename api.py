@@ -14,6 +14,7 @@ from fastapi import FastAPI, HTTPException, Query, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 
 import app_core
+import features
 from models import (
     AccidentClaimGuideEntry,
     AccidentCompensationEstimateRequest,
@@ -57,6 +58,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Drop-in feature routers (features/*.py). New endpoints never edit this file.
+for _feature_router in features.routers():
+    app.include_router(_feature_router)
 
 
 @app.middleware("http")

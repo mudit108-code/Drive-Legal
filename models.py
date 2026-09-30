@@ -9,6 +9,13 @@ from typing import Any, Literal
 from pydantic import BaseModel, ConfigDict, Field, NonNegativeFloat, NonNegativeInt
 
 
+def __getattr__(name: str) -> Any:
+    """Expose models defined by drop-in ``features/`` modules as ``models.<name>``."""
+    import features
+
+    return features.lookup(name)
+
+
 class SourceModel(BaseModel):
     """Metadata for an official source or gazette notification."""
     model_config = ConfigDict(extra="forbid", frozen=True)

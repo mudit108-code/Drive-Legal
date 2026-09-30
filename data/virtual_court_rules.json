@@ -1,0 +1,158 @@
+{
+  "system_title": "National Virtual Courts Traffic Challan Redressal System",
+  "statutory_basis": "Section 208 MVA 1988 (Summary disposal of cases); Section 206 CrPC / Section 231 BNSS",
+  "portal_url": "https://vcourts.gov.in",
+  "general_guidelines": {
+    "default_summons_window_days": 90,
+    "escalation_stage": "Regular Metropolitan Magistrate / Chief Judicial Magistrate Court",
+    "evidence_standard": "CMVR Rule 167A (Mandatory photographic/video proof with timestamp and geo-coordinates)",
+    "statutory_appeal": "High Court under Section 397/401 CrPC or Section 438 BNSS"
+  },
+  "jurisdictions": {
+    "Delhi": {
+      "virtual_court_name": "Delhi Virtual Traffic Court (Centralized)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Metropolitan Magistrate (Traffic) Court of concerned police district",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Delhi processes 100% of camera-captured notices (speed, red light, bus lane) through Virtual Courts. Unpaid challans after 90 days are automatically escalated for physical summons."
+    },
+    "Maharashtra": {
+      "virtual_court_name": "Maharashtra Virtual Traffic Court (Pune & Mumbai)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Judicial Magistrate First Class (JMFC) / Special Metropolitan Magistrate",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Mumbai and Pune traffic police notices are routed through e-Challan payment gateway and Virtual Court."
+    },
+    "Uttar Pradesh": {
+      "virtual_court_name": "UP Virtual Traffic Court (Lucknow, Noida, Ghaziabad, Kanpur)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Chief Judicial Magistrate (CJM) Court",
+      "summons_window_days": 60,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Summons window is strictly 60 days before file is placed before physical court for issuing bailable warrants."
+    },
+    "Karnataka": {
+      "virtual_court_name": "Bengaluru Virtual Traffic Court",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Metropolitan Magistrate Traffic Court (MMTC), Bengaluru",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Karnataka allows both online plea and offline compounding at Karnataka One / Traffic Police Stations."
+    },
+    "Tamil Nadu": {
+      "virtual_court_name": "Tamil Nadu Virtual Court (Chennai)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Metropolitan Magistrate Court, Chennai",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Integrated with Greater Chennai Traffic Police (GCTP) e-Challan enforcement."
+    },
+    "Kerala": {
+      "virtual_court_name": "Kerala Virtual Court (Kochi & Thiruvananthapuram)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Judicial First Class Magistrate Court (JFMC)",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "AI camera challans from Safe Kerala Project are adjudicated under this court."
+    },
+    "Gujarat": {
+      "virtual_court_name": "Gujarat Virtual Traffic Court (Ahmedabad & Surat)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Metropolitan Court, Ahmedabad / JMFC",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Covers One Nation One Challan project notices for major municipal commissionerates."
+    },
+    "Haryana": {
+      "virtual_court_name": "Haryana Virtual Court (Faridabad & Gurugram)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Special Judicial Magistrate Court",
+      "summons_window_days": 60,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Intelligent Traffic Management System (ITMS) camera challans are processed here."
+    },
+    "West Bengal": {
+      "virtual_court_name": "Kolkata Virtual Traffic Court",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Metropolitan Magistrate Court, Calcutta",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Kolkata Police Automated CCTV Challan System notices are listed here."
+    },
+    "Odisha": {
+      "virtual_court_name": "Odisha Virtual Traffic Court (Cuttack & Bhubaneswar)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Sub-Divisional Judicial Magistrate (SDJM) Court",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Statewide camera e-challan enforcement integrated with e-Courts."
+    },
+    "Punjab": {
+      "virtual_court_name": "Punjab Virtual Traffic Court (Ludhiana & Mohali)",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Judicial Magistrate First Class Court",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Enforcement notices on national highways and city roads."
+    },
+    "Andhra Pradesh": {
+      "virtual_court_name": "Andhra Pradesh Virtual Traffic Court",
+      "is_active": true,
+      "online_plea_available": true,
+      "contest_transfer_court": "Special Judicial Magistrate of Second Class",
+      "summons_window_days": 90,
+      "portal_domain": "vcourts.gov.in/virtualcourt/",
+      "special_notes": "Integrated with AP Police e-Challan and Parivahan."
+    }
+  },
+  "grounds_to_contest": [
+    {
+      "code": "missing_or_blurred_plate",
+      "name": "Defective Photographic Proof — Registration Plate Illegible",
+      "statutory_basis": "CMVR Rule 167A(4); Section 136A MVA 1988",
+      "success_likelihood": "High",
+      "recommendation": "Contest challan before Magistrate. CMVR Rule 167A mandates clear photographic proof showing registration plate."
+    },
+    {
+      "code": "wrong_vehicle_model",
+      "name": "Mismatched Vehicle Type or Class",
+      "statutory_basis": "Section 136A MVA 1988; Parivahan Vahan Master Record",
+      "success_likelihood": "Very High",
+      "recommendation": "Contest immediately. Provide RC copy showing vehicle class differs from the camera recognition record."
+    },
+    {
+      "code": "camera_calibration_expired",
+      "name": "Expired Radar / Camera Calibration Certificate",
+      "statutory_basis": "CMVR Rule 167A(3); Legal Metrology Act 2009",
+      "success_likelihood": "High",
+      "recommendation": "Contest and file RTI request under Sec 6(1) for calibration certificate. Speed radar readings without valid calibration are inadmissible."
+    },
+    {
+      "code": "emergency_passage_given",
+      "name": "Giving Way to Emergency Vehicle (Ambulance / Fire Brigade)",
+      "statutory_basis": "Section 194E MVA 1988; Rule 115 Rules of the Road",
+      "success_likelihood": "High",
+      "recommendation": "Contest in court. Yielding to an emergency vehicle is a mandatory statutory duty under Sec 194E; crossing stop line for this purpose is legally protected."
+    },
+    {
+      "code": "vehicle_stolen_or_sold",
+      "name": "Vehicle Stolen or Already Transferred Prior to Incident",
+      "statutory_basis": "Section 50 MVA (Transfer of ownership); Section 379 IPC / Section 303 BNS",
+      "success_likelihood": "Very High",
+      "recommendation": "Submit FIR copy of vehicle theft or Form 29/30 sale delivery receipt. Registered owner is immune if vehicle was stolen or transferred."
+    }
+  ]
+}
