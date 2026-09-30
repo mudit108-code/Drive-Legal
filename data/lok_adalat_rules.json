@@ -1,0 +1,84 @@
+{
+  "title": "National Lok Adalat Traffic Challan Settlement Framework",
+  "statutory_basis": "Legal Services Authorities Act, 1987 (Sections 19, 20, 21); Section 200 Motor Vehicles Act, 1988",
+  "authority": "National Legal Services Authority (NALSA) & State Legal Services Authorities (SLSAs)",
+  "award_finality": "Section 21 Legal Services Authorities Act: Award of Lok Adalat is deemed a decree of civil court; no appeal lies against the compromise award.",
+  "quarterly_calendar": [
+    {
+      "quarter": "Q1",
+      "month": "March",
+      "description": "First National Lok Adalat of the calendar year across all High Courts and District Courts."
+    },
+    {
+      "quarter": "Q2",
+      "month": "May / June",
+      "description": "Second National Lok Adalat focusing on compoundable traffic offences and summary disputes."
+    },
+    {
+      "quarter": "Q3",
+      "month": "September",
+      "description": "Third National Lok Adalat before the festive season."
+    },
+    {
+      "quarter": "Q4",
+      "month": "December",
+      "description": "Final National Lok Adalat of the year for pending traffic challan clearances."
+    }
+  ],
+  "state_concession_policies": {
+    "Karnataka": {
+      "average_concession_pct": 50.0,
+      "policy_type": "flat_percentage_rebate",
+      "slsa_name": "Karnataka State Legal Services Authority (KSLSA)",
+      "token_portal": "https://kslsa.kar.nic.in",
+      "notes": "Karnataka Government orders have historically provided a flat 50% discount on pending traffic challans during Lok Adalats."
+    },
+    "Delhi": {
+      "average_concession_pct": 65.0,
+      "policy_type": "judicial_summary_discretion",
+      "slsa_name": "Delhi State Legal Services Authority (DSLSA)",
+      "token_portal": "https://delhitrafficpolice.nic.in / DSLSA",
+      "notes": "DSLSA issues online token booking for designated court complexes (Tis Hazari, Saket, Patiala House, Karkardooma, Rohini, Dwarka)."
+    },
+    "Maharashtra": {
+      "average_concession_pct": 60.0,
+      "policy_type": "token_fine_reduction",
+      "slsa_name": "Maharashtra State Legal Services Authority (MSLSA)",
+      "token_portal": "https://legalservices.maharashtra.gov.in",
+      "notes": "High rate of compounding disposal for two-wheeler and commercial goods carriage minor violations."
+    },
+    "Uttar Pradesh": {
+      "average_concession_pct": 55.0,
+      "policy_type": "judicial_summary_discretion",
+      "slsa_name": "UP State Legal Services Authority (UPSLSA)",
+      "token_portal": "https://upslsa.up.gov.in",
+      "notes": "Concessions applied across all district courts under Chief Judicial Magistrate supervision."
+    },
+    "Tamil Nadu": {
+      "average_concession_pct": 50.0,
+      "policy_type": "flat_percentage_rebate",
+      "slsa_name": "Tamil Nadu State Legal Services Authority (TNSLSA)",
+      "token_portal": "https://hcmadras.tn.gov.in/tnsla",
+      "notes": "High settlement rates for helmet, seatbelt, and signal compliance notices."
+    },
+    "Gujarat": {
+      "average_concession_pct": 50.0,
+      "policy_type": "statutory_compounding_matching",
+      "slsa_name": "Gujarat State Legal Services Authority (GSLSA)",
+      "token_portal": "https://gslsa.gujarat.gov.in",
+      "notes": "Matches state Section 200 reduced compounding rates with additional court fee waivers."
+    },
+    "DEFAULT": {
+      "average_concession_pct": 50.0,
+      "policy_type": "general_nalsa_guideline",
+      "slsa_name": "Concerned State Legal Services Authority (SLSA)",
+      "token_portal": "https://nalsa.gov.in",
+      "notes": "General NALSA recommendation: 50% concession bracket for non-hazardous compoundable traffic offences."
+    }
+  },
+  "non_compoundable_offences": [
+    "drunk_driving",
+    "minor_driving",
+    "racing_on_road"
+  ]
+}
