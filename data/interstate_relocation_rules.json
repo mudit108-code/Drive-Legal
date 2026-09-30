@@ -1,0 +1,35 @@
+{
+  "statutory_framework": {
+    "section_47": "Section 47, Motor Vehicles Act, 1988 (Assignment of new registration mark on removal to another State exceeding 12 months)",
+    "section_48": "Section 48, Motor Vehicles Act, 1988 (No Objection Certificate in Form 28; deemed approval after 30 days under Sec 48(3))",
+    "tax_refund_statute": "State Motor Vehicles Taxation Acts (Pro-rata lifetime tax refund upon re-registration in new state)",
+    "statutory_lifespan_months": 180
+  },
+  "procedural_rules": {
+    "interstate_grace_period_months": 12,
+    "noc_mandate_form": "Form 28",
+    "re_registration_form": "Form 27",
+    "refund_claim_form": "Form DT / State Refund Application",
+    "required_documents": [
+      "Original Registration Certificate (RC)",
+      "Form 28 in triplicate with pencil chassis imprint",
+      "Valid motor vehicle insurance certificate",
+      "Pollution Under Control (PUC) certificate",
+      "Proof of address in destination state",
+      "NOC / Crime clearance certificate from State Traffic Police",
+      "Receipt of road tax paid in destination state (for refund claim)"
+    ]
+  },
+  "refund_depreciation_schedule": {
+    "year_1": 90.0,
+    "year_2": 80.0,
+    "year_3": 70.0,
+    "year_4": 60.0,
+    "year_5": 50.0,
+    "year_6": 40.0,
+    "year_7": 30.0,
+    "year_8": 20.0,
+    "year_9": 10.0,
+    "after_year_10": 5.0
+  }
+}
