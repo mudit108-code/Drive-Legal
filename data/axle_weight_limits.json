@@ -1,0 +1,85 @@
+{
+  "title": "MoRTH Safe Axle Weights and Overloading Statutory Schedule",
+  "statutory_basis": "Section 113, 114, 194(1), 194(2) Motor Vehicles Act, 1988 (as amended 2019); MoRTH Notification S.O. 2822(E)",
+  "penalty_parameters": {
+    "base_overloading_fine_inr": 20000,
+    "per_excess_tonne_fine_inr": 2000,
+    "refusal_to_weigh_fine_inr": 40000,
+    "offloading_mandate": "Section 194(1)(b) prohibits vehicle from moving until excess weight is offloaded at owner/driver expense.",
+    "custody_provisions": "Vehicle may be detained under Section 207 MVA until excess weight is unloaded and penalty deposited."
+  },
+  "configurations": [
+    {
+      "code": "2_axle_rigid",
+      "name": "2-Axle Rigid Truck (1 Steer + 1 Single Drive Axle)",
+      "tyres": 6,
+      "max_permissible_gvw_tonnes": 18.5,
+      "steer_axle_limit_tonnes": 7.0,
+      "drive_axle_limit_tonnes": 11.5,
+      "description": "Standard medium goods carriage; MoRTH 2018 notification increased max GVW from 16.2 to 18.5 tonnes."
+    },
+    {
+      "code": "3_axle_rigid",
+      "name": "3-Axle Rigid Truck (1 Steer + Tandem Rear Axle)",
+      "tyres": 10,
+      "max_permissible_gvw_tonnes": 28.0,
+      "steer_axle_limit_tonnes": 7.0,
+      "drive_axle_limit_tonnes": 21.0,
+      "description": "Heavy commercial multi-axle truck; maximum permitted GVW is 28 tonnes."
+    },
+    {
+      "code": "4_axle_rigid",
+      "name": "4-Axle Rigid Truck (2 Twin-Steer + Tandem Rear Axle)",
+      "tyres": 12,
+      "max_permissible_gvw_tonnes": 35.0,
+      "steer_axle_limit_tonnes": 14.0,
+      "drive_axle_limit_tonnes": 21.0,
+      "description": "Heavy haulage vehicle with twin front steerable axles; statutory limit 35 tonnes."
+    },
+    {
+      "code": "5_axle_rigid",
+      "name": "5-Axle Rigid Truck (2 Twin-Steer + Tri-Axle Rear)",
+      "tyres": 14,
+      "max_permissible_gvw_tonnes": 43.5,
+      "steer_axle_limit_tonnes": 14.0,
+      "drive_axle_limit_tonnes": 29.5,
+      "description": "Heavy long-haul rigid chassis truck; statutory limit 43.5 tonnes."
+    },
+    {
+      "code": "tractor_trailer_3_axle",
+      "name": "3-Axle Tractor-Trailer Articulated Combination",
+      "tyres": 10,
+      "max_permissible_gvw_tonnes": 30.0,
+      "steer_axle_limit_tonnes": 7.0,
+      "drive_axle_limit_tonnes": 23.0,
+      "description": "2-axle prime mover tractor with single axle semi-trailer."
+    },
+    {
+      "code": "tractor_trailer_4_axle",
+      "name": "4-Axle Tractor-Trailer Articulated Combination",
+      "tyres": 14,
+      "max_permissible_gvw_tonnes": 40.0,
+      "steer_axle_limit_tonnes": 7.0,
+      "drive_axle_limit_tonnes": 33.0,
+      "description": "2-axle prime mover with tandem axle semi-trailer or 3-axle prime mover with single axle."
+    },
+    {
+      "code": "tractor_trailer_5_axle",
+      "name": "5-Axle Tractor-Trailer Articulated Combination",
+      "tyres": 18,
+      "max_permissible_gvw_tonnes": 49.0,
+      "steer_axle_limit_tonnes": 7.0,
+      "drive_axle_limit_tonnes": 42.0,
+      "description": "3-axle prime mover with tandem axle semi-trailer; high capacity container carrier."
+    },
+    {
+      "code": "tractor_trailer_6_axle",
+      "name": "6-Axle Tractor-Trailer Articulated Combination",
+      "tyres": 22,
+      "max_permissible_gvw_tonnes": 55.0,
+      "steer_axle_limit_tonnes": 7.0,
+      "drive_axle_limit_tonnes": 48.0,
+      "description": "3-axle prime mover with tri-axle semi-trailer; maximum standard highway transport capacity."
+    }
+  ]
+}
